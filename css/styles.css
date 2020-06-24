@@ -202,7 +202,7 @@ body{
   background-color: #AEC300;
 }
 
-.mdfn1,.mdfn2,.mdfn3,.mdfn4,.udfn3,.sdfn3,.usfn1,.usfn2,.smfn1,.smfn2,.smfn4{
+.mdfn1,.mdfn2,.mdfn3,.mdfn4,.udfn3,.sdfn3,.usfn1,.usfn2,.smfn1,.smfn2,.smfn3,.smfn4{
   
   max-width: 300px;
   margin-top: 0.5px;
@@ -212,7 +212,7 @@ body{
   background-color: ivory;
 }
 
-.mdfn1 button, .mdfn2 button, .mdfn3 button ,.mdfn4 button,.udfn3 button,.sdfn3 button,.usfn1 button,.usfn2 button,.smfn1 button,.smfn2 button,.smfn4 button{
+.mdfn1 button, .mdfn2 button, .mdfn3 button ,.mdfn4 button,.udfn3 button,.sdfn3 button,.usfn1 button,.usfn2 button,.smfn1 button,.smfn2 button,.smfn3 button,.smfn4 button{
   border: none;
   outline: 0;
   padding: 12px;
@@ -224,7 +224,7 @@ body{
   font-size: 18px;
 }
 
-.mdfn1,.mdfn2,.mdfn3,.mdfn4,.udfn3,.sdfn3,.smfn1,.smfn2,.smfn4
+.mdfn1,.mdfn2,.mdfn3,.mdfn4,.udfn3,.sdfn3,.smfn1,.smfn2,.smfn3,.smfn4
 {
   margin-left: 10%;
   max-width: 200px;
@@ -290,6 +290,11 @@ body{
   margin-top: 29px;
 }
 
+.smfn3 button
+{
+  background-color: royalblue;
+  margin-top: 49px;
+}
 
 .smfn4 button
 {
