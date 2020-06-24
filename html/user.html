@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Home Management System</title>
+    <link rel="icon" type="image/png" href="../images/Home%20Icon%20-1.png">
+    <!--Google Fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/04a54148ef.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--web3js interface-->
+    <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
+    <script type="text/javascript" src="../js/abi.js"></script>
+    <script type="text/javascript" src="../js/web3i.js"></script>
+    <script type="text/javascript" src="../js/user.js"></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    
+      <div class="container-fluid">
+      <!-- Nav Bar -->
+
+      <navbar class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand nav-bar-text" href="#">Smart Home Management</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link nav-bar-text" href="#register"
+                >Register</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-bar-text" href="#dashboardus">Dashboard</a>
+            </li>
+        </div>
+      </navbar>
+    </div>
+    
+    <section id="register">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col col-lg-12">
+              <div class="reg-box" id="reg-box">
+                <div class="reg-form" id="reg-form">
+                  <img src="../images/User%20Icon%20-1.png" width="50px" height="50px">
+                  <h3>User Registration</h3><br><br>
+                  <form>
+                
+                  <div class="form-group">
+                      <label for="User-Name">User Name</label>
+                      <input type="text" class="form-control" id="User Name" placeholder="User Name">
+                  </div>
+                      
+                  <div class="form-group">
+                      <label for="User-Phone-No">User Phone No</label>
+                      <input type="text" class="form-control" id="User Phone No" placeholder="User Phone No">
+                  </div>
+                      
+                  <div class="form-group form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">I agree to terms and conditions</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" onclick="registerUser()">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section id="dashboardus">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col col-lg-12">
+               
+                <button type="button" class="btn btn-primary" onclick="getuserdetails()" style="margin-left: 43.5%;margin-top: 5%">Display User Details</button>
+              
+                <div class="display details" text align="center" style="margin-top: 5%">
+                  <h6>User Address :</h6><p align="center" id="r1">..</p>
+                  <h6>User Name :</h6><p align="center" id="r2">..</p>
+                  <h6>User Phone Number :</h6><p align="center" id="r3">..</p>
+                  
+                </div>
+                <br>
+                <div class="functions">
+                    
+                    <div class="usfn1">
+                      <img src="../images/transfer%20house.jpg" alt="transfer-house" width="300px" height="300px">
+                      <br>
+                      
+                        <h4>Transfer House</h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="House-ID">House ID</label>
+                                <input type="text" class="form-control" id="House-ID" placeholder="House ID">     
+                            </div>                        
+                            <div class="form-group">
+                                <label for="New-Owner-Name">New Owner Name</label>
+                                <input type="text" class="form-control" id="New-Owner-Name" placeholder="New Owner Name">     
+                            </div>
+                            <div class="form-group">  
+                                <label for="New-Owner-Address">New Owner Address</label>
+                                <input type="text" class="form-control" id="New-Owner-Address" aria-describedby="addrHelp" placeholder="New Owner Address">
+                                <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
+                            </div>
+                            <p id="House-Transfer-Result">(Result)</p>
+                            <button type="button" onclick="housetransfer()">Transfer</button>
+
+                        </form> 
+                      
+                    </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+  </section>
+
+  </body>
+</html>

@@ -1,0 +1,298 @@
+.circle-container {
+  position: relative;
+  width: 48em;
+  height: 24em;
+  padding: 2.8em;
+  /*2.8em = 2em*1.4 (2em = half the width of a link with img, 1.4 = sqrt(2))*/
+  border: none;
+  border-radius: 50%;
+  margin: 1.75em auto 0;
+}
+.circle-container a {
+  display: block;
+  position: absolute;
+  top: 55%;
+  left: 32%;
+  width: 7em;
+  height: 7em;
+  margin: -2em;
+}
+.circle-container img {
+  display: block;
+  width: 7em;
+  height: 7em;
+  border-radius: 100%;
+  
+}
+.center {
+  width: 500em;
+  height: 500em;
+}
+.deg0 {
+  transform: translate(9em);
+} /* 12em = half the width of the wrapper */
+.deg45 {
+  transform: rotate(60deg) translate(9em) rotate(-60deg);
+}
+.deg135 {
+  transform: rotate(120deg) translate(9em) rotate(-120deg);
+}
+.deg180 {
+  transform: translate(-9em);
+}
+.deg225 {
+  transform: rotate(240deg) translate(9em) rotate(-240deg);
+}
+.deg315 {
+  transform: rotate(300deg) translate(9em) rotate(-300deg);
+}
+.container-fluid{
+    padding: 0;
+}
+body{
+    padding:0;
+ 
+      
+  background-image: url("../images/Home-1.jpg");
+  background-size: cover;
+}
+
+.grid-container{
+  display: inline-grid;
+  grid-template-columns: 70% 30%;
+  height: 100vh;
+  margin: 0;
+}
+.box{
+  background-color: ivory;
+}
+
+
+.reg-box
+{
+  position: relative;
+  background-color: ivory;
+  width:400px;
+  margin-left: 35%;
+  margin-top: 7%;
+
+  
+}
+
+.reg-form
+{
+  display: inline-grid;
+  padding-top: 20px;
+  width: 300px;
+  padding-bottom: 30px;
+  margin-left: 10%;
+  margin-right: 10%
+
+}
+
+#dashboard
+{
+  margin-top: 20%;
+  float: center;
+  height: 100%;
+  background-color:#FFD68A;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+#dashboardmd
+{
+  margin-top: 20%;
+  float: center;
+  height: 100%;
+  background-color:lightpink;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+#dashboardud
+{
+  margin-top: 20%;
+  float: center;
+  height: 100%;
+  background-color:darkgray;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+#dashboarded
+{
+  margin-top: 20%;
+  float: center;
+  height: 100%;
+  background-color:lightcoral;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+#dashboardsm
+{
+  margin-top: 20%;
+  float: center;
+  height: 100%;
+  background-color:cadetblue;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+#dashboardsd,#dashboardus
+{
+  margin-top: 20%;
+  float: center;
+  height: 100%;
+  background-color:lightskyblue;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+.choose-home
+{
+  text-align: center;
+  padding-top: 60px;
+}
+
+.functions
+{
+  padding-top: 1%;
+  display: flex;
+}
+
+.fn1,.fn2,.fn3{
+  
+  max-width: 300px;
+  margin-top: 0.5px;
+  margin-left:50px;
+  text-align: center;
+  font-family: arial;
+  background-color: ivory;
+}
+
+.fn1 button, .fn2 button, .fn3 button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #FF7D61;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.fn2,.fn3
+{
+  margin-left: 20%;
+  max-width: 200px;
+}
+
+.fn2 button
+{
+  background-color: #FF9138;
+  margin-top: 17.5%;
+}
+
+
+.fn3 button
+{
+  background-color: #AEC300;
+}
+
+.mdfn1,.mdfn2,.mdfn3,.mdfn4,.udfn3,.sdfn3,.usfn1,.usfn2,.smfn1,.smfn2,.smfn4{
+  
+  max-width: 300px;
+  margin-top: 0.5px;
+  margin-left:30px;
+  text-align: center;
+  font-family: arial;
+  background-color: ivory;
+}
+
+.mdfn1 button, .mdfn2 button, .mdfn3 button ,.mdfn4 button,.udfn3 button,.sdfn3 button,.usfn1 button,.usfn2 button,.smfn1 button,.smfn2 button,.smfn4 button{
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #FF7D61;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.mdfn1,.mdfn2,.mdfn3,.mdfn4,.udfn3,.sdfn3,.smfn1,.smfn2,.smfn4
+{
+  margin-left: 10%;
+  max-width: 200px;
+}
+
+.usfn1,.usfn2
+{
+  margin-left: 40%;
+  max-width: 300px;
+}
+
+.mdfn1 button
+{
+  background-color: orange;
+  margin-top: 27px;
+}
+
+.mdfn2 button
+{
+  background-color: royalblue;
+}
+
+.mdfn3 button
+{
+  background-color: orangered;
+  margin-top: 165px;
+}
+
+.mdfn4 button
+{
+  background-color: deepskyblue;
+  margin-top: 50px;
+}
+
+.udfn3 button
+{
+  background-color: indianred;
+  margin-top: 78px;    
+}
+
+.sdfn3 button
+{
+  background-color: grey;
+  margin-top: 165px;
+}
+
+
+
+.usfn2 button
+{
+  background-color: indianred;
+}
+
+.smfn1 button
+{
+  background-color: orange;
+  margin-top: 54px;
+}
+
+.smfn2 button
+{
+  background-color: royalblue;
+  margin-top: 29px;
+}
+
+
+.smfn4 button
+{
+  background-color: darkgrey;
+  margin-top: 54px;
+}

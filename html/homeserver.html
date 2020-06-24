@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Home Management System</title>
+    <link rel="icon" type="image/png" href="../images/Home%20Icon%20-1.png">
+    <!--Google Fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/04a54148ef.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--web3-->
+    <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
+    <script type="text/javascript" src="../js/abi.js"></script>
+    <script type="text/javascript" src="../js/web3i.js"></script>
+    <script type="text/javascript" src="../js/homescript.js"></script>
+    
+    <!--CSS-->
+    <link rel="stylesheet" href="../css/styles.css" />
+
+  </head>
+  <body>
+    
+      <div class="container-fluid">
+      <!-- Nav Bar -->
+
+      <navbar class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand nav-bar-text" href="#">Smart Home Management</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link nav-bar-text" href="#register"
+                >Register</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-bar-text" href="#dashboard">Dashboard</a>
+            </li>
+        </div>
+      </navbar>
+    </div>
+    
+    <section id="register">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col col-lg-12">
+              <div class="reg-box" id="reg-box" style="width: 500px">
+                <div class="reg-form" id="reg-form" style="width:400px">
+                  <img src="../images/Home Icon -1.png" width="50px" height="50px">
+                  <h3>Homeserver Registration</h3><br><br>
+                  <form>
+                  <div class="form-group">
+                      <label for="House-Location">House Location</label>
+                      <input type="text" class="form-control" id="House-Location" placeholder="House Location">     
+                  </div>
+                  <div class="form-group">
+                      <label for="Owner-Name">Owner Name</label>
+                      <input type="text" class="form-control" id="Owner-Name" placeholder="Owner Name">     
+                  </div>
+                  <div class="form-group">
+                      <label for="Current-Occupant-Name">Current Occupant Name</label>
+                      <input type="text" class="form-control" id="Current-Occupant-Name" placeholder="Current Occupant Name">
+                  </div>
+                  <div class="form-group">
+                      <label for="Current-Occupant-Address">Current Occupant Address</label>
+                      <input type="text" class="form-control" id="Current-Occupant-Address" aria-describedby="addrHelp" placeholder="Current Occupant Address">
+                      <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
+                  </div>
+                  <div class="form-group form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">I agree to terms and conditions</label>
+                  </div>
+                  <button type="button" class="btn btn-primary" onclick="registerHS()">Submit</button>
+                  <p id="registerresult">..</p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section id="dashboard">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col col-lg-12">
+                <div class="choose-home">
+                      <form>
+                            <div class="form-group">
+                               <label for="House-Id">House ID</label>
+                               <input type="text" class="form-control" id="home-choices-id" placeholder="House-Id" style="width:50%;text-align: center;margin-left: 27.5%;">     
+                            </div>
+                            
+                            <button type="button" class="btn btn-primary" onclick="getdetails()">Submit</button>
+
+                      </form> 
+                </div> 
+                <br>
+                <div class="display details" style="text-align: center;">
+                  <h6>House Location :</h6><p align="center" id="r1">..</p>
+                  <h6>House Owner Name :</h6><p align="center" id="r2">..</p>
+                  <h6>House  Owner Address :</h6><p align="center" id="r3">..</p>
+                  <h6>House Current Occupant Name :</h6><p align="center" id="r4">..</p>
+                  <h6>House Current Occupant Address :</h6><p align="center" id="r5">..</p>
+                  <h6>House Rent :</h6><p align="center" id="r6">..</p>
+                  
+                  
+                </div>
+                <br>
+                <div class="functions">
+                    <div class="fn1">
+                      <img src="../images/set-rent.png" alt="set-rent" width="200px" height="200px">
+                      <br>
+                      
+                        <h4>Set Rent Price</h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="Rent-Amount">Rent-Amount</label>
+                                <input type="text" class="form-control" id="Rent-Amount" placeholder="Rent Amount">     
+                            </div>
+                            <div class="form-group">
+                                <label for="Rent-Date">Rent-Date</label>
+                                <input type="text" class="form-control" id="Rent-Date" placeholder="Rent Date">     
+                            </div>
+                            <p>(Result)</p>
+                            <button type="button" onclick="setRent()">Set Rent</button>
+
+                        </form> 
+                      
+                    </div>
+                    <div class="fn2">
+                      
+                      <img src="../images/pay-rent.jpeg" alt="pay-rent" width="100px" height="100px" style="margin-top: 3%">
+                      <hr>
+                      <h4> Pay Rent </h4><br>
+                      <p> Click the pay rent button. It is automatically transferred to the house owner</p>
+                        <p>Note: Only the current occupant can pay the amount</p>
+                        <p>(result)</p>
+                      <button type="button" onclick="payRent()">Pay Rent</button>
+                      
+                    </div>
+
+                    
+                    <div class="fn3">
+                      <img src="../images/eco-factor.jpg" alt="eco-factor" width="200px" height="200px">
+                      <br>
+                      
+                        <h4>Eco-Factor</h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="LPG used">LPG used (in therm)</label>
+                                <input type="text" class="form-control" id="LPG used" placeholder="Rent Amount">     
+                            </div>
+                            <div class="form-group">
+                                <label for="Oil">Heating Oil Used (in therm)</label>
+                                <input type="text" class="form-control" id="Oil" placeholder="Rent Date">     
+                            </div>
+                            <div class="form-group">
+                                <label for="TokenID">TOKEN ID</label>
+                                <input type="text" class="form-control" id="TokenID" placeholder="Token ID">     
+                            </div>
+                            <p>(Result)</p>
+                            <button type="button" onclick="ecoFactor(e)">Calculate</button>
+
+                        </form> 
+                      
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  </section>
+
+  </body>
+</html>
