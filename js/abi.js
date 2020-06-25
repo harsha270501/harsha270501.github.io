@@ -230,6 +230,40 @@ var hsABI=[
 	{
 		"inputs": [
 			{
+				"internalType": "address payable",
+				"name": "old_own",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "new_owner",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "new_owner_add",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "house_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "change_house_own",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "bytes32",
 				"name": "hid",
 				"type": "bytes32"
@@ -719,8 +753,7 @@ var hsABI=[
 		"type": "function"
 	}
 ]
-
-var hsSC="0xDB39318510c207DD7AA1710355662ff566380AB6";
+var hsSC="0xFe388911E1039a4eA1F62a90282D2a2b15E95bC1";
 
 var usABI=[
 	{
