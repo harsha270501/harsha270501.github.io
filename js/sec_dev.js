@@ -1,29 +1,5 @@
 web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws/v3/cbd9dc11b30147e9a2cc974be655ef7c"));
          
-var devid;
-
-const web3Contract = new web3.eth.Contract(sdABI, sdSC);
-
-// Get dagger contract
-const daggerContract = dagger.contract(web3Contract);
-
-// Get subscription filter
-const filter = daggerContract.events.Transfer({filter: { from: '0x82b3fb8d07b3113d1dc3f91acfd77b2e6fb693d77ee32bdaa79b19144d1fba7e ' }});
-
-// Start watching logs
-filter.watch((rlog) => {
-  // log.returnValues.value => 100 GNT
-  // log.returnValues.from => '0x12345678...'
-  // log.returnValues.to => address which value has been transferred to
-  console.log(rlog.returnValues.value);
-});
-    /*
-    const dagger = new EthDagger('wss://mainnet.dagger.matic.network');
-
-// Subscribe for latest block
-dagger.on('latest:0x70Cf8acEdf34edb7e968dcFf762608639dce8aEb/filter/0x82b3fb8d07b3113d1dc3f91acfd77b2e6fb693d77ee32bdaa79b19144d1fba7e/#', (block) => {
-  // Use block
-});*/
 
     function hexToString (hex) 
           {
