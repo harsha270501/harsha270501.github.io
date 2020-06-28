@@ -136,7 +136,7 @@ function addhousefn(r1,r2){
                     {
                         //display value on the webpage
                         console.log(result);
-                        document.getElementByID("display-details").style.display="block";
+                        document.getElementById("display-details").style.display="block";
                         document.getElementById("r1").innerHTML=result[0];
                         document.getElementById("r2").innerHTML=result[1];
                         document.getElementById("r3").innerHTML=result[2];
