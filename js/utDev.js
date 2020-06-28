@@ -11,6 +11,50 @@ function hexToString(hex) {
   console.log(tobeconverted);
   return tobeconverted;
 }
+//get details
+function getdetails() {
+  ut_dev_id = document.getElementById("ut-dev-id").value;
+  console.log(hid);
+  try {
+    var myContract = new web3.eth.Contract(utdevAbi, utdevAddr, {
+      from: account,
+      gasPrice: "5000000",
+      gas: "3000000",
+    });
+
+    myContract.methods
+      .retrieve_ut_dev_details(ut_dev_id)
+      .call(function (err, result) {
+        if (err) {
+          console.log(err);
+        }
+        if (result) {
+          var Arr = ["AC", "TV", "FR", "PC"];
+          console.log(result);
+          document.getElementById("r1").innerHTML = result[0];
+          house_id = document.getElementById("r1").innerHTML = result[0];
+          document.getElementById("r2").innerHTML = result[1];
+          document.getElementById("r3").innerHTML = Arr[result[2]];
+          document.getElementById("r4").innerHTML = result[3];
+          document.getElementById("display-div").className = "show";
+        }
+      });
+
+    document.getElementById("ut-dev-id").reset();
+  } catch (err) {
+    console.log(err);
+  }
+}
+function confirmationPopUp(result) {
+  document.getElementById("ut-modal-text").innerHTML = result;
+  document.getElementById("ut-myModal").style.display = "block";
+}
+window.onclick = function (event) {
+  if (event.target == document.getElementById("ut-myModal")) {
+    document.getElementById("ut-myModal").style.display = "none";
+  }
+};
+
 //Emit Function for Registration
 var registerUtDev = web3.eth.subscribe(
   "logs",
@@ -215,46 +259,3 @@ function lastServDate() {
     console.log(err);
   }
 }
-//get details
-function getdetails() {
-  ut_dev_id = document.getElementById("ut-dev-id").value;
-  console.log(hid);
-  try {
-    var myContract = new web3.eth.Contract(utdevAbi, utdevAddr, {
-      from: account,
-      gasPrice: "5000000",
-      gas: "3000000",
-    });
-
-    myContract.methods
-      .retrieve_ut_dev_details(ut_dev_id)
-      .call(function (err, result) {
-        if (err) {
-          console.log(err);
-        }
-        if (result) {
-          var Arr = ["AC", "TV", "FR", "PC"];
-          console.log(result);
-          document.getElementById("r1").innerHTML = result[0];
-          house_id = document.getElementById("r1").innerHTML = result[0];
-          document.getElementById("r2").innerHTML = result[1];
-          document.getElementById("r3").innerHTML = Arr[result[2]];
-          document.getElementById("r4").innerHTML = result[3];
-          document.getElementById("display-div").className = "show";
-        }
-      });
-
-    document.getElementById("ut-dev-id").reset();
-  } catch (err) {
-    console.log(err);
-  }
-}
-function confirmationPopUp(result) {
-  document.getElementById("ut-modal-text").innerHTML = result;
-  document.getElementById("ut-myModal").style.display = "block";
-}
-window.onclick = function (event) {
-  if (event.target == document.getElementById("ut-myModal")) {
-    document.getElementById("ut-myModal").style.display = "none";
-  }
-};
