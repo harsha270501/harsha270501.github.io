@@ -25,25 +25,6 @@ var mon_dev_abi=
 		"inputs": [
 			{
 				"indexed": false,
-				"internalType": "bytes32",
-				"name": "",
-				"type": "bytes32"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "emit_mon_units_consumed",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
@@ -128,6 +109,30 @@ var mon_dev_abi=
 	{
 		"inputs": [
 			{
+				"internalType": "bytes32",
+				"name": "ui_mon_dev_id",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ui_value",
+				"type": "uint256"
+			}
+		],
+		"name": "mon_update_value",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "ui_mon_type",
 				"type": "string"
@@ -194,9 +199,24 @@ var mon_dev_abi=
 				"type": "bytes32"
 			},
 			{
-				"internalType": "bytes32",
+				"internalType": "enum Monitoring_devices.MDTYPES",
 				"name": "",
-				"type": "bytes32"
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -205,7 +225,7 @@ var mon_dev_abi=
 ]
 
 
-var mon_dev_sca = '0x1aA549AEE0c3CE9c4a5643C7cA879e70579bFD72'; 
+var mon_dev_sca = '0x0c9D4008DdC91409aFabaFe6b6211D83313591f1'; 
 
 
 
@@ -362,14 +382,19 @@ var smart_mtr_abi=
 				"type": "bytes32"
 			},
 			{
-				"internalType": "bytes32",
+				"internalType": "enum Smart_Meter.MTYPES",
 				"name": "",
-				"type": "bytes32"
+				"type": "uint8"
 			},
 			{
-				"internalType": "bool",
+				"internalType": "uint256",
 				"name": "",
-				"type": "bool"
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -401,4 +426,4 @@ var smart_mtr_abi=
 	}
 ]
 
-var smart_mtr_sca = '0x1318FB0aCb21256efCc0482903f36273D3194471'; 
+var smart_mtr_sca = '0xE35fbE2972adFdeB38B722F6AdDED28429B14Df6'; 
