@@ -110,7 +110,7 @@
                       <input type="text" class="form-control" id="Device-Rating" placeholder="Device Rating">
                   </div>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                       <label class="form-check-label" for="exampleCheck1">I agree to terms and conditions</label>
                   </div>
                   <button type="submit" class="btn btn-primary" onclick="emrgRegister()">Submit</button>
@@ -122,132 +122,26 @@
         </div>
     </section>
 
-    <!-- <section id="">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col col-lg-12">
-                <div class="choose-home">
-                  <select class="home-choices">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                <br>
-                <div class="display details">
-                  <h5 align="center"> (Details about the selected Emergency Device will be displayed here)</h5>
-                </div>
-                <br>
-                <div class="functions">
-                    <div class="mdfn1">
-                      <img src="../images/Access.png" alt="grant-access" width="200px" height="200px">
-                      <br>
-                      
-                        <h4>Grant Access Rights</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID1">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID1" placeholder="Device ID">     
-                            </div>
-                            <div class="form-group">  
-                                <label for="Address1">Address</label>
-                                <input type="text" class="form-control" id="Address1" aria-describedby="addrHelp" placeholder="Address">
-                                <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                            </div>
-                            <p>(Result)</p>
-                            <button type="submit" onclick="grantAccessRights()">Add Access Rights</button>
-
-                        </form> 
-                      
-                    </div>
-                    <div class="mdfn2">
-                      <img src="../images/deny_access.png" alt="deny-access" width="200px" height="200px">
-                      <br>
-                      
-                        <h4>Remove Access Rights</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID2">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID2" placeholder="Device ID">     
-                            </div>
-                            <div class="form-group">  
-                                <label for="Address2">Address</label>
-                                <input type="text" class="form-control" id="Address2" aria-describedby="addrHelp" placeholder="Address">
-                                <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                            </div>
-                            <p>(Result)</p>
-                            <button type="submit" onclick="removeAccessRights()">Remove Access Rights</button>
-
-                        </form> 
-                      
-                    </div>
-                    
-                    <div class="mdfn3">
-
-                      <img src="../images/Emergency.jpg" alt="detect-emergency" width="200px" height="200px">
-                      <br>
-                      
-                        <h4>Detect Emergency</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID3">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID3" placeholder="Device ID">     
-                            </div>
-                            <div class="form-group">  
-                                <label for="House-ID2">House ID</label>
-                                <input type="text" class="form-control" id="House-ID2" aria-describedby="addrHelp" placeholder="House ID">
-                                <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                            </div>
-                            
-                            <p>(Result)</p>
-                            <button type="submit" onclick="detectEmergency()">Check</button>
-
-                        </form> 
-                        
-                    </div>
-
-                    
-                    <div class="mdfn4">
-                      <img src="../images/units.png" alt="units-consumed" width="200px" height="200px">
-                      <br>
-                      
-                        <h4>Update Units Consumed</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID4">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID4" placeholder="Device ID">     
-                            </div>
-                            <div class="form-group">
-                                <label for="Units-Consumed">Units consumed</label>
-                                <input type="text" class="form-control" id="Units-consumed" placeholder="Units consumed">     
-                            </div>
-                            <p id="result">(Result)</p>
-                            <button type="submit" onclick="emrgReadUnitsConsumed()">Update</button>
-
-                        </form> 
-                      
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-  </section> -->
   <section id="dashboarded" class="">
     <div class="choose-home">
-      <select class="home-choices">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-    <br>
-    <div class="display details">
-      <h5 align="center"> (Details about the selected Emergency Device will be displayed here)</h5>
-    </div>
-    <br>
-    
+      <form>
+            <div class="form-group">
+               <label for="emrg_dev_id">Emergency Device ID</label>
+               <input type="text" class="form-control" id="emrg_dev_id" placeholder="Emrg-Dev-Id" style="width:50%;text-align: center;margin-left: 27.5%;">     
+            </div>
+            
+            <button type="button" class="btn btn-primary" onclick="getdetails()">Submit</button>
+
+      </form> 
+  </div> 
+  <br>
+  <div id="display-div" class="hide" style="text-align: center;">
+    <h6>ID :</h6><p align="center" id="r1">..</p>
+    <h6>Type:</h6><p align="center" id="r2">..</p>
+    <h6>Units Consumed :</h6><p align="center" id="r3">..</p>
+    <h6>Rating :</h6><p align="center" id="r4">..</p>    
+  </div>
+  <br>
     <div
       id="testimonial-carousel"
       class="carousel slide"
@@ -261,16 +155,12 @@
             
               <h4>Grant Access Rights</h4>
               <form>
-                  <div class="form-group">
-                      <label for="Device-ID1">Device ID</label>
-                      <input type="text" class="form-control" id="Device-ID1" placeholder="Device ID">     
-                  </div>
                   <div class="form-group">  
                       <label for="Address1">Address</label>
                       <input type="text" class="form-control" id="Address1" aria-describedby="addrHelp" placeholder="Address">
                       <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
                   </div>
-                  <p>(Result)</p>
+                  <!-- <p>(Result)</p> -->
                   <button type="submit" onclick="grantAccessRights()" style="background-color: #f9b233;">Add Access Rights</button>
 
               </form> 
@@ -283,16 +173,12 @@
             
               <h4>Remove Access Rights</h4>
               <form>
-                  <div class="form-group">
-                      <label for="Device-ID2">Device ID</label>
-                      <input type="text" class="form-control" id="Device-ID2" placeholder="Device ID">     
-                  </div>
                   <div class="form-group">  
                       <label for="Address2">Address</label>
                       <input type="text" class="form-control" id="Address2" aria-describedby="addrHelp" placeholder="Address">
                       <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
                   </div>
-                  <p>(Result)</p>
+                  <!-- <p>(Result)</p> -->
                   <button type="submit" onclick="removeAccessRights()" style="background-color: #3069d1;">Remove Access Rights</button>
 
               </form> 
@@ -306,18 +192,8 @@
             <br>
             
               <h4>Detect Emergency</h4>
-              <form>
-                  <div class="form-group">
-                      <label for="Device-ID3">Device ID</label>
-                      <input type="text" class="form-control" id="Device-ID3" placeholder="Device ID">     
-                  </div>
-                  <div class="form-group">  
-                      <label for="House-ID2">House ID</label>
-                      <input type="text" class="form-control" id="House-ID2" aria-describedby="addrHelp" placeholder="House ID">
-                      <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                  </div>
-                  
-                  <p>(Result)</p>
+              <form>                
+                  <!-- <p>(Result)</p> -->
                   <button type="submit" onclick="detectEmergency()" style="background-color: #da5555;">Check</button>
 
               </form> 
@@ -331,15 +207,12 @@
             
               <h4>Update Units Consumed</h4>
               <form>
-                  <div class="form-group">
-                      <label for="Device-ID4">Device ID</label>
-                      <input type="text" class="form-control" id="Device-ID4" placeholder="Device ID">     
-                  </div>
+                  
                   <div class="form-group">
                       <label for="Units-Consumed">Units consumed</label>
                       <input type="text" class="form-control" id="Units-consumed" placeholder="Units consumed">     
                   </div>
-                  <p id="result">(Result)</p>
+                  <!-- <p id="result">(Result)</p> -->
                   <button type="submit" onclick="emrgReadUnitsConsumed()" style="background-color: #00aeae;">Update</button>
 
               </form> 
