@@ -277,7 +277,7 @@ function houserental(){
                 var houseid = document.getElementById("House-ID").value;
                 var newown = document.getElementById("New-Owner-Name").value;
                 var newownaddr = document.getElementById("New-Owner-Address").value;
-                myContract.methods.transfer_house(newown,newownaddr,houseid).send(function (err, result) 
+                myContract.methods.change_curr_occ(newown,newownaddr,houseid).send(function (err, result) 
                 {
                     if (err) 
                     { 
