@@ -1355,197 +1355,370 @@ var emrgdevAbi = [
     type: "function",
   },
 ];
-var emrgdevAddr = "0x835F18136f4129d554c796E160B182796943b474";
+
+var emrgdevAbi = [
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "house_id",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "emrg_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "alert_emergency",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "house_id",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "emrg_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "registered_emrg_dev",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_house_id",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "ui_emrg_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "emergency",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "ui_access_id",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "ui_emrg_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "grant_access",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_emrg_dev_id",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ui_emrg_units_con",
+				"type": "uint256"
+			}
+		],
+		"name": "read_units_consumed",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_house_id",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ui_emrg_dev_rating",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "ui_emrg_dev_type",
+				"type": "string"
+			}
+		],
+		"name": "register_emergency_device",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "ui_access_id",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "ui_emrg_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "remove_access",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_emrg_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "retrieve_emrg_dev_details",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "enum Emergency_Device.DEVTYPES",
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_emrg_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "retrieve_mapping",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+var emrgdevAddr = "0xe5Aece076ab0377ACC38641C6759C0Cef3508403";
 
 var emrgDevTopics = {reg:"0x91d7dc9651593afc25ee0f6012ad44246c8774061126a5003ddb70f38502cba0",
-					unit:"0x9ff4d64aa877498c19c687f36af1d0ca03ea8857054d4e87b74bd59c971cba20",
 					emrg:"0x81a398a552d2b57303f587ca935e666a2362dbbdab6714a9707b3e267f70ae44"}
 var utdevAbi = [
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "emit_Units_Consumed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "bytes32",
-        name: "house_id",
-        type: "bytes32",
-      },
-      {
-        indexed: false,
-        internalType: "bytes32",
-        name: "emrg_dev_id",
-        type: "bytes32",
-      },
-    ],
-    name: "registered_ut_dev",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "ui_access_id",
-        type: "address",
-      },
-      {
-        internalType: "bytes32",
-        name: "ui_ut_dev_id",
-        type: "bytes32",
-      },
-    ],
-    name: "grant_access",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "bytes32",
-        name: "ui_ut_dev_id",
-        type: "bytes32",
-      },
-      {
-        internalType: "uint256",
-        name: "ui_ut_units_con",
-        type: "uint256",
-      },
-    ],
-    name: "read_units_consumed",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "bytes32",
-        name: "ui_house_id",
-        type: "bytes32",
-      },
-      {
-        internalType: "uint256",
-        name: "ui_ut_dev_rating",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "ui_ut_dev_type",
-        type: "string",
-      },
-    ],
-    name: "register_utility_device",
-    outputs: [
-      {
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "ui_access_id",
-        type: "address",
-      },
-      {
-        internalType: "bytes32",
-        name: "ui_ut_dev_id",
-        type: "bytes32",
-      },
-    ],
-    name: "remove_access",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "bytes32",
-        name: "ui_ut_dev_id",
-        type: "bytes32",
-      },
-    ],
-    name: "retrieve_ut_dev_details",
-    outputs: [
-      {
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32",
-      },
-      {
-        internalType: "enum Utility_Device.DEVTYPES",
-        name: "",
-        type: "uint8",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "bytes32",
-        name: "ui_ut_dev_id",
-        type: "bytes32",
-      },
-      {
-        internalType: "string",
-        name: "ui_ut_last_ser_date",
-        type: "string",
-      },
-    ],
-    name: "service_device",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-];
-
-var utdevAddr = "0xA04c18b9cfE3495eF4066517Dc3500d0d8f7B028";
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "house_id",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "ut_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "registered_ut_dev",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "ui_access_id",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "ui_ut_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "grant_access",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_ut_dev_id",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ui_ut_units_con",
+				"type": "uint256"
+			}
+		],
+		"name": "read_units_consumed",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_house_id",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ui_ut_dev_rating",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "ui_ut_dev_type",
+				"type": "string"
+			}
+		],
+		"name": "register_utility_device",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "ui_access_id",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "ui_ut_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "remove_access",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_ut_dev_id",
+				"type": "bytes32"
+			}
+		],
+		"name": "retrieve_ut_dev_details",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "enum Utility_Device.DEVTYPES",
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_ut_dev_id",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "string",
+				"name": "ui_ut_last_ser_date",
+				"type": "string"
+			}
+		],
+		"name": "service_device",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
+var utdevAddr = "0x706f133739af16B29bf1Dd7a9A42D01aB6581e1a";
 
 var utDevTopics = {
   reg:"0xc752657b29309768e63435e256a3b089013dff5bb8c2e161796401cffa9b4d46",
-  unit:"0x9ff4d64aa877498c19c687f36af1d0ca03ea8857054d4e87b74bd59c971cba20",
 };
 
 var mon_dev_abi=
