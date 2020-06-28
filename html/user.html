@@ -40,12 +40,7 @@
       crossorigin="anonymous"
     ></script>
     
-    <script>
-      function display(){
-        document.getElementbyID("display-details").style.display="block";
-        getuserdetails();
-      }
-    </script>
+    
 
     <!--web3js interface-->
     <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
@@ -145,9 +140,9 @@
         <div class="row">
             <div class="col col-lg-12">
                
-                <button type="button" class="btn btn-primary" onclick="display()" style="margin-left: 43.5%;margin-top: 5%">Display User Details</button>
+                <button type="button" class="btn btn-primary" onclick="getuserdetails();" style="margin-left: 43.5%;margin-top: 5%">Display User Details</button>
               
-                <div class="display details" id="display-details" text align="center" style="margin-top: 5%">
+                <div class="display details" id="display-details" text align="center" style="margin-top: 5%;display:none;">
                   <h6>User Address :</h6><p align="center" id="r1">..</p>
                   <h6>User Name :</h6><p align="center" id="r2">..</p>
                   <h6>User Phone Number :</h6><p align="center" id="r3">..</p>
