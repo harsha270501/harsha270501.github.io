@@ -2,7 +2,6 @@ web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws
          
 var mon_dev_id;
 
-    
     function hexToString (hex) 
           {
             var tobeconverted = '';
@@ -18,20 +17,70 @@ var register_mon = web3.eth.subscribe(
     address: mon_dev_sca,
     topics: mon_dev_topics.reg,
   },
-  function (error, result) {
-    console.log("inside if");
-    if (!error) {
-      console.log(result.data.slice(67));
-      try {
+  function (error, result) 
+        {
+        if (!error)
+             {
+                var datar=result.data;
+                var ini="0x";
+                var res1=ini.concat(datar.slice(2,66));
+                var res2=ini.concat(datar.slice(66));
+                console.log(res2); //house id
+                console.log(res1); //device id
+                
+                
+                console.log(account);
+              
+                if(checkhousereg(res2)){
+                    confirmationPopUp("Monitoring Device ID: ".concat(res1));
+                    adddevfn(res2,res1);
+                }
+                 
+            }
+            else
+                 {
+                    console.log(error);
+                 }
+         });
 
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      console.log(error);
+
+function checkhousereg(hid){
+         var bval=false;
+    try
+    {
+        var myContract=new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+        myContract.methods.add_dev(hid).call(function(err,result){
+            if(err)
+                console.log(err);
+            else
+            {
+                     console.log(result);
+                     bval=result;
+            }
+
+        });
     }
-  }
-);
+    catch(err)
+    {    console.log(err);}
+         return bval;
+}
+
+function adddevfn(r1,r2){
+    try
+    {
+        var myContract=new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+        myContract.methods.add_dev(r1,r2).send(function(err,result){
+            if(err)
+                console.log(err);
+            else
+                console.log(result);
+
+        });
+    }
+    catch(err)
+    {    console.log(err);}
+    
+}
 
 
 //Emit function for Emergency
