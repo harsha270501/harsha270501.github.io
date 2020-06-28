@@ -204,7 +204,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
                 var mon_dev_units = document.getElementById("units_units_consumed").value;
                 var mon_dev_id = document.getElementById("units_mon_dev_id").value;
                 
-                myContract.methods.mon_read_units_consumed(mon_dev_id,mon_dev_units).send(function (err, result) 
+                myContract.methods.mon_update_value(mon_dev_id,mon_dev_units).send(function (err, result) 
                 {
                     if (err) 
                     { 
@@ -226,7 +226,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
 
         }
 
-        function mon_dev_update_value(){
+        /*function mon_dev_update_value(){
             
             try 
             {
@@ -235,7 +235,38 @@ var emergency_mon = web3.eth.subscribe('logs', {
                 var mon_dev_id = document.getElementById("emerg_mon_dev_id").value;
 				var mon_value  = document.getElementById("emerg_mon_dev_value").value;
                 
-                myContract.methods.mon_update_valu(mon_dev_id,mon_value).send(function (err, result) 
+                myContract.methods.mon_update_value(mon_dev_id,mon_value).send(function (err, result) 
+                {
+                    if (err) 
+                    { 
+                        console.log(err);
+                         
+                        
+                    }
+                    if (result) 
+                    {
+                        console.log(result);
+                        confirmationPopUp(result);
+                    }
+                });
+
+            }
+            catch (err) 
+            {
+              console.log(err);
+            }
+
+        }*/
+
+        function mon_dev_emerg()(){
+            
+            try 
+            {
+ 
+                var myContract = new web3.eth.Contract(mon_dev_abi,mon_dev_sca, {from: account, gasPrice: '5000000', gas:'3000000'})
+                var mon_dev_id = document.getElementById("emerg_mon_dev_id").value;
+                
+                myContract.methods.emerg(mon_dev_id).send(function (err, result) 
                 {
                     if (err) 
                     { 
@@ -303,6 +334,8 @@ var emergency_mon = web3.eth.subscribe('logs', {
             }
 
         }
+
+
 
 function mon_display()
 {
