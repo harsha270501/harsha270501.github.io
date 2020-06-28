@@ -13,8 +13,8 @@ function hexToString(hex) {
 }
 //get details
 function getdetails() {
-  ut_dev_id = $("#ut-dev-id");
-    console.log(ut_dev_id);
+  ut_dev_id = document.getElementById("ut-dev-id").value;
+  console.log(ut_dev_id);
   try {
     var myContract = new web3.eth.Contract(utdevAbi, utdevAddr, {
       from: account,
@@ -40,18 +40,18 @@ function getdetails() {
         }
       });
 
-    $("#ut-dev-id").reset();
+    document.getElementById("ut-dev-id").reset();
   } catch (err) {
     console.log(err);
   }
 }
 function confirmationPopUp(result) {
-  $("#ut-modal-text").innerHTML = result;
-  $("#ut-myModal").style.display = "block";
+  document.getElementById("ut-modal-text").innerHTML = result;
+  document.getElementById("ut-myModal").style.display = "block";
 }
 window.onclick = function (event) {
-  if (event.target == $("#ut-myModal")) {
-    $("#ut-myModal").style.display = "none";
+  if (event.target == document.getElementById("ut-myModal")) {
+    document.getElementById("ut-myModal").style.display = "none";
   }
 };
 
