@@ -2,7 +2,29 @@ web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws
          
 var devid;
 
-    
+const web3Contract = new web3.eth.Contract(sdABI, sdSC);
+
+// Get dagger contract
+const daggerContract = dagger.contract(web3Contract);
+
+// Get subscription filter
+const filter = daggerContract.events.Transfer({filter: { from: '0x82b3fb8d07b3113d1dc3f91acfd77b2e6fb693d77ee32bdaa79b19144d1fba7e ' }});
+
+// Start watching logs
+filter.watch((rlog) => {
+  // log.returnValues.value => 100 GNT
+  // log.returnValues.from => '0x12345678...'
+  // log.returnValues.to => address which value has been transferred to
+  console.log(rlog.returnValues.value);
+});
+    /*
+    const dagger = new EthDagger('wss://mainnet.dagger.matic.network');
+
+// Subscribe for latest block
+dagger.on('latest:0x70Cf8acEdf34edb7e968dcFf762608639dce8aEb/filter/0x82b3fb8d07b3113d1dc3f91acfd77b2e6fb693d77ee32bdaa79b19144d1fba7e/#', (block) => {
+  // Use block
+});*/
+
     function hexToString (hex) 
           {
             var tobeconverted = '';
@@ -27,19 +49,52 @@ var devid;
                 var hid = document.getElementById("House-ID").value;
                 var sdevtype = document.getElementById("Security-Device-Type").value;
                 var sdevkey = document.getElementById("Security-Key").value;
-        
-                myContract.methods.sec_dev_reg(hid,sdevkey,sdevtype).send(function (err, result) 
+                var res;
+                
+                try
                 {
-                    if (err) 
-                    { 
-                        console.log(err);
-                    }
-                    if (result) 
-                    {
-                        //display value on the webpage
-                        console.log(result);
-                    }
-                });
+                    var houseContract=new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+                    houseContract.methods.dev_ret_house_own_addr(hid).call(function(err,result){
+                        if(err)
+                            console.log(error);
+                        if(result)
+                        {
+                            console.log(result);
+                            
+                            console.log(account);
+                            if(result==acc)
+                            {
+                                res=true;
+                            }
+                            else
+                            {
+                                res=false;
+                            }
+                        }
+
+                    });
+                }   
+                catch(err){
+                    console.log(err);
+                }          
+
+                if(res)
+                {
+                    myContract.methods.sec_dev_reg(hid,sdevkey,sdevtype).send(function (err, result) 
+                                {
+                                    if (err) 
+                                    { 
+                                        console.log(err);
+                                    }
+                                    if (result) 
+                                    {
+                                        //display value on the webpage
+                                        console.log(result);
+                                    }
+                                });
+                }
+                else
+                    console.log("not possible to register");
 
             }
             catch (err) 
@@ -246,3 +301,14 @@ var devid;
               console.log(err);
             }
         }
+
+    function confirmationPopUp(result) {
+  document.getElementById("modal-text").innerHTML = result;
+  document.getElementById("myModal").style.display = "block";
+}
+
+window.addEventListener("click",function (event) {
+  if (event.target == document.getElementById("myModal")) {
+    document.getElementById("myModal").style.display = "none";
+  }
+});
