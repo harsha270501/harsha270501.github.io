@@ -34,12 +34,7 @@
       crossorigin="anonymous"
     ></script>
     
-    <script>
-      function display(){
-        document.getElementbyID("display-details").style.display="block";
-        getSDdetails();
-      }
-    </script>
+    
 
      <!--web3-->
     <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
@@ -177,7 +172,7 @@
                        <input type="text" class="form-control" id="Sec-Id" placeholder="House-Id" style="width:50%;text-align: center;margin-left: 27.5%;">     
                     </div>
                     
-                    <button type="button" class="btn btn-primary" onclick="display()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick=" getSDdetails()">Submit</button>
 
               </form> 
         </div> 
