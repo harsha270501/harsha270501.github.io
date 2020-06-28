@@ -68,7 +68,7 @@ var registerEmrg = web3.eth.subscribe(
     confirmationPopUp("Device ID:"+res2);
     console.log("inside if");
     if (!error) {
-      console.log(result.data.slice(67));
+      console.log(res2);
       try {
            var myContract = new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
             var res;
@@ -98,12 +98,19 @@ var Emergency = web3.eth.subscribe(
   "logs",
   {
     address: emrgdevAddr,
-    topics: emrgDevTopics.emrg,
+    topics: [emrgDevTopics.emrg],
   },
   function (error, result) {
+    var datar=result.data;
+    var ini="0x";
+    var res1=ini.concat(datar.slice(2,66));
+    var res2=ini.concat(datar.slice(66));
+    console.log(res1); //house id
+    console.log(res2); //device id
+    confirmationPopUp("Device ID:"+res2);
     console.log("inside if");
     if (!error) {
-      console.log(result.data);
+      console.log(result);
     } else {
       console.log(error);
     }
