@@ -1960,30 +1960,6 @@ var smart_mtr_abi=
 
 [
 	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "id",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "address",
-				"name": "a",
-				"type": "address"
-			}
-		],
-		"name": "add_acc_rights",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -2020,6 +1996,30 @@ var smart_mtr_abi=
 		],
 		"name": "give_tokens",
 		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "id",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "a",
+				"type": "address"
+			}
+		],
+		"name": "add_acc_rights",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -2101,6 +2101,40 @@ var smart_mtr_abi=
 				"type": "bytes32"
 			}
 		],
+		"name": "retrieve_mtr_dev_details",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "enum Smart_Meter.MTYPES",
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "ui_mtr_id",
+				"type": "bytes32"
+			}
+		],
 		"name": "tot_units_con",
 		"outputs": [
 			{
@@ -2135,52 +2169,11 @@ var smart_mtr_abi=
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "ui_mtr_id",
-				"type": "bytes32"
-			}
-		],
-		"name": "retrieve_mtr_dev_details",
-		"outputs": [
-			{
-				"internalType": "bytes32",
-				"name": "",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "enum Smart_Meter.MTYPES",
-				"name": "",
-				"type": "uint8"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
 	}
 ]
 
-var smart_mtr_sca = '0x547ae508751478203aa9c8ab4049478D77b327e2'; 
-
-var smart_mtr_topics = {
-  reg:"0xdcca2fd466d95919391212a9e3c71b1ebabf78ac15dd2b33ce4531e03242be6c",
-  token:"0x63740acb0b61ea9006ac46884aa42fc7cb582744fe9d34048797b599be5e0d33"
-};
+var smart_mtr_sca = '0xBefd306b8d2a581c1D5F0B4156dDE66729C49a3E'; 
 
 
-var smart_mtr_topics = {
-  reg:"0xdcca2fd466d95919391212a9e3c71b1ebabf78ac15dd2b33ce4531e03242be6c",
-  token:"0x63740acb0b61ea9006ac46884aa42fc7cb582744fe9d34048797b599be5e0d33"
-};
+
+
