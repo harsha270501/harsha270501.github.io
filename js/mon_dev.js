@@ -10,8 +10,46 @@ var mon_dev_id;
             console.log(tobeconverted);
             return tobeconverted;
           }
-        
+  
+//Emit Function for Registration
+var register_mon = web3.eth.subscribe(
+  "logs",
+  {
+    address: mon_dev_sca,
+    topics: mon_dev_topics.reg,
+  },
+  function (error, result) {
+    console.log("inside if");
+    if (!error) {
+      console.log(result.data.slice(67));
+      try {
 
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      console.log(error);
+    }
+  }
+);
+
+
+//Emit function for Emergency
+var emergency_mon = web3.eth.subscribe(
+  "logs",
+  {
+    address: mon_dev_sca,
+    topics: mon_dev_topics.emrg,
+  },
+  function (error, result) {
+    console.log("inside if");
+    if (!error) {
+      console.log(result.data);
+    } else {
+      console.log(error);
+    }
+  }
+);
 
         function mon_dev_register()
         {
@@ -219,17 +257,19 @@ var mon_dev_id;
 
         }
 
-                                function mon_display()
-                                {
-                                  var x = document.getElementById("mon_dev_details");
-                                    x.style.display = "block";
-                                }
+function mon_display()
+{
+    var x = document.getElementById("mon_dev_details");
+    x.style.display = "block";
+}
 
-function confirmationPopUp(result) {
+function confirmationPopUp(result) 
+{
   document.getElementById("modal-text").innerHTML = result;
   document.getElementById("myModal").style.display = "block";
 }
-window.onclick = function (event) {
+window.onclick = function (event) 
+{
   if (event.target == document.getElementById("myModal")) {
     document.getElementById("myModal").style.display = "none";
   }
