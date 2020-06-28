@@ -415,3 +415,9 @@ body {
   width: 100%;
   font-size: 18px;
 }
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
