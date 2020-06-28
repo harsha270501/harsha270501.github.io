@@ -1,5 +1,6 @@
 web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws/v3/cbd9dc11b30147e9a2cc974be655ef7c"));
 var bval=false;     
+var hid="";
 var adddev = web3.eth.subscribe('logs', {
              address: '0x4B2c943a533936654A2599bF7bf4a80f3b32f5eD',
              topics: ['0x82b3fb8d07b3113d1dc3f91acfd77b2e6fb693d77ee32bdaa79b19144d1fba7e']
@@ -253,6 +254,7 @@ function adddevfn(r1,r2){
                     if (err) 
                     { 
                         console.log(err);
+                        updatesmartmeter(units);
                         
                     }
                     if (result) 
@@ -268,6 +270,38 @@ function adddevfn(r1,r2){
               console.log(err);
             }
 
+        }
+
+        function updatesmartmeter(u){
+               try 
+            {
+                // contract Abi defines all the variables,constants and functions of the smart contract. replace with your own abi
+                //instantiate and connect to contract address via Abi
+                var myContract = new web3.eth.Contract(smart_mtr_abi, smart_mtr_sca, {from: account, gasPrice: '5000000', gas:'3000000'});
+                
+          
+                
+                
+                myContract.methods.update_units(hid,u).send(function (err, result) 
+                {
+                    if (err) 
+                    { 
+                        console.log(err);
+                    }
+                    if (result) 
+                    {
+                        //display value on the webpage
+                        console.log(result);
+                        
+                    }
+                });
+
+                
+            }
+            catch (err) 
+            {
+              console.log(err);
+            }
         }
 
         function getSDdetails()
@@ -295,6 +329,7 @@ function adddevfn(r1,r2){
                         console.log(result);
                         document.getElementById("r1").innerHTML=result[0];
                         document.getElementById("r2").innerHTML=result[1];
+                        hid=result[1];
                         var r=result[2];
                         var res;
                         if(r=="0")
