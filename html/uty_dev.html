@@ -46,6 +46,8 @@
     <!--JS-->
     <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
     <script src="../js/utDev.js"></script>
+    <script type="text/javascript" src="../js/web3i.js"></script>
+    <script type="text/javascript" src="../js/abi.js"></script>
   </head>
   <body>
     
@@ -121,80 +123,167 @@
           </div>
         </div>
     </section>
+    
+  <section id="dashboarded" class="">
+    <div class="choose-home">
+      <select class="home-choices">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <br>
+    <div class="display details">
+      <h5 align="center"> (Details about the selected Emergency Device will be displayed here)</h5>
+    </div>
+    <br>
+    
+    <div
+      id="testimonial-carousel"
+      class="carousel slide"
+      data-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active container-fluid">
+          <div class="functions">
+          <div class="udfn1">
+            <img src="../images/Access.png" alt="grant-access" width="200px" height="200px">
+            <br>
+            
+              <h4>Grant Access Rights</h4>
+              <form>
+                  <div class="form-group">
+                      <label for="Device-ID1">Device ID</label>
+                      <input type="text" class="form-control" id="Device-ID1" placeholder="Device ID">     
+                  </div>
+                  <div class="form-group">  
+                      <label for="Address1">Address</label>
+                      <input type="text" class="form-control" id="Address1" aria-describedby="addrHelp" placeholder="Address">
+                      <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
+                  </div>
+                  <p>(Result)</p>
+                  <button type="submit" onclick="grantAccessRights()" style="background-color: #f9b233;">Add Access Rights</button>
 
-    <section id="dashboardud">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col col-lg-12">
-                <div class="choose-home">
-                  <select class="home-choices">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                <br>
-                <div class="display details">
-                  <h5 align="center"> (Details about the selected Utility Device will be displayed here)</h5>
-                </div>
-                <br>
-                <div class="functions">
-                    
-                    <div class="udfn3">
+              </form> 
+            
+          </div>
 
-                      <img src="../images/service_date.png" alt="service date" width="300px" height="300px">
-                      <br>
-                      
-                        <h4>Last Service Date</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID2">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID2" placeholder="Device ID">     
-                            </div>
-                            <!--<div class="form-group">  
-                                <label for="Address">Address</label>
-                                <input type="text" class="form-control" id="Address" aria-describedby="addrHelp" placeholder="Address">
-                                <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                            </div>
-                            -->
-                            <div class="form-group">
-                                <label for="Service-Date">Service-Date</label>
-                                <input type="date" class="form-control" id="Service-Date" placeholder="Service Date">     
-                            </div>
-                            <p>(Result)</p>
-                            <button type="submit" onclick="lastServDate()">Update</button>
+          <div class="udfn2">
+            <img src="../images/deny_access.png" alt="deny-access" width="200px" height="200px">
+            <br>
+            
+              <h4>Remove Access Rights</h4>
+              <form>
+                  <div class="form-group">
+                      <label for="Device-ID2">Device ID</label>
+                      <input type="text" class="form-control" id="Device-ID2" placeholder="Device ID">     
+                  </div>
+                  <div class="form-group">  
+                      <label for="Address2">Address</label>
+                      <input type="text" class="form-control" id="Address2" aria-describedby="addrHelp" placeholder="Address">
+                      <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
+                  </div>
+                  <p>(Result)</p>
+                  <button type="submit" onclick="removeAccessRights()" style="background-color: #3069d1;">Remove Access Rights</button>
 
-                        </form> 
-                        
-                    </div>
-
-                    
-                    <div class="udfn4">
-                      <img src="../images/units.png" alt="units-consumed" width="300px" height="300px">
-                      <br>
-                      
-                        <h4>Update Units Consumed</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID3">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID3" placeholder="Device ID">     
-                            </div>
-                            <div class="form-group">
-                                <label for="Units-Consumed">Units consumed</label>
-                                <input type="text" class="form-control" id="Units-consumed" placeholder="Units consumed">     
-                            </div>
-                            <p>(Result)</p>
-                            <button type="submit" onclick="utReadUnitsConsumed()">Update</button>
-
-                        </form> 
-                      
-                    </div>
-                </div>
-              </div>
+              </form> 
             </div>
           </div>
+        </div>
+        <div class="carousel-item container-fluid">
+          <div class="functions">
+          <div class="udfn1">
+
+            <img src="../images/service_date.png" alt="service date" width="300px" height="300px">
+            <br>
+            
+              <h4>Last Service Date</h4>
+              <form>
+                  <div class="form-group">
+                      <label for="Device-ID3">Device ID</label>
+                      <input type="text" class="form-control" id="Device-ID3" placeholder="Device ID">     
+                  </div>
+                  <!-- <div class="form-group">  
+                      <label for="Address">Address</label>
+                      <input type="text" class="form-control" id="Address" aria-describedby="addrHelp" placeholder="Address">
+                      <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
+                  </div>
+                   -->
+                  <div class="form-group">
+                      <label for="Service-Date">Service-Date</label>
+                      <input type="date" class="form-control" id="Service-Date" placeholder="Service Date">     
+                  </div>
+                  <p>(Result)</p>
+                  <button type="submit" onclick="lastServDate()" style="background-color: #da5555;">Update</button>
+
+              </form> 
+              
+          </div>
+
+
+          <div class="udfn2">
+            <img src="../images/units.png" alt="units-consumed" width="300px" height="300px">
+            <br>
+            
+              <h4>Update Units Consumed</h4>
+              <form>
+                  <div class="form-group">
+                      <label for="Device-ID4">Device ID</label>
+                      <input type="text" class="form-control" id="Device-ID3" placeholder="Device ID">     
+                  </div>
+                  <div class="form-group">
+                      <label for="Units-Consumed">Units consumed</label>
+                      <input type="text" class="form-control" id="Units-consumed" placeholder="Units consumed">     
+                  </div>
+                  <p>(Result)</p>
+                  <button type="submit" onclick="utReadUnitsConsumed()" style="background-color: #00aeae;">Update</button>
+
+              </form> 
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#testimonial-carousel"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#testimonial-carousel"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </section>
 
+
+  <div id="ut-myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <span class="close" id="close">&times;</span> -->
+        <h2>Transaction Confirmation</h2>
+      </div>
+      <div class="modal-body">
+        
+        <p class="modal-text" id="ut-modal-text">""</p>
+      </div>
+      <div class="modal-footer">
+        <p>Click anywhere to close notification</p>
+      </div>
+    </div>
+  
+  </div>
   </body>
 </html>
