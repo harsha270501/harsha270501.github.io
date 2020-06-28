@@ -36,9 +36,11 @@
 
      <!--web3-->
     <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eth-dagger/lib/eth-dagger.min.js"></script>
     <script type="text/javascript" src="../js/abi.js"></script>
     <script type="text/javascript" src="../js/web3i.js"></script>
     <script type="text/javascript" src="../js/sec_dev.js"></script>
+
 
     <!--Font Awesome-->
     <script
@@ -133,7 +135,24 @@
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">I agree to terms and conditions</label>
                   </div>
-                  <button type="button" class="btn btn-primary" onclick="registerSD()">Submit</button>
+                  <p id="mon_text" style="display:none">Plese click on the checkbox to continue..</p>
+                  <button type="button" class="btn btn-primary" onclick="mon_check_box()">Submit</button>
+                   <script>
+                          
+                                function mon_check_box() 
+                                {
+                                  var checkBox = document.getElementById("mon_check");
+                                  var mon_text = document.getElementById("mon_text");
+                                  if (checkBox.checked == false){
+                                    mon_text.style.display = "block";
+                                  } else {
+                                     mon_text.style.display = "none";
+                                     registerSD();
+                                  }
+                                }
+
+                          
+                          </script>
                   </form>
                 </div>
               </div>
@@ -143,29 +162,30 @@
     </section>
 
     <section id="dashboardsd">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col col-lg-12">
-                 <div class="choose-home">
-                      <form>
-                            <div class="form-group">
-                               <label for="Sec-Id">Security Device ID</label>
-                               <input type="text" class="form-control" id="Sec-Id" placeholder="House-Id" style="width:50%;text-align: center;margin-left: 27.5%;">     
-                            </div>
-                            
-                            <button type="button" class="btn btn-primary" onclick="getSDdetails()">Submit</button>
+      
+         <div class="choose-home">
+              <form>
+                    <div class="form-group">
+                       <label for="Sec-Id">Security Device ID</label>
+                       <input type="text" class="form-control" id="Sec-Id" placeholder="House-Id" style="width:50%;text-align: center;margin-left: 27.5%;">     
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary" onclick="getSDdetails()">Submit</button>
 
-                      </form> 
-                </div> 
+              </form> 
+        </div> 
+        <br>
+        <div class="display details" style="text-align: center;">
+          <h6>Security Device ID :</h6><p align="center" id="r1">..</p>
+          <h6>House ID :</h6><p align="center" id="r2">..</p>
+          <h6>Security Device Type :</h6><p align="center" id="r2">..</p>
+        </div>
                 <br>
-                <div class="display details" style="text-align: center;">
-                  <h6>Security Device ID :</h6><p align="center" id="r1">..</p>
-                  <h6>House ID :</h6><p align="center" id="r2">..</p>
-                  <h6>Security Device Type :</h6><p align="center" id="r2">..</p>
-                </div>
-                <br>
+        <div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active container-fluid">
                 <div class="functions">
-                    <div class="mdfn1" style="margin-left: 5%">
+                    <div class="fn1" style="margin-left: 10%">
                       <img src="../images/Access.png" alt="grant-access" width="200px" height="200px">
                       <br>
                       
@@ -178,12 +198,12 @@
                                 <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
                             </div>
                             <p>(Result)</p>
-                            <button type="button" onclick="addaccrights()">Add Access Rights</button>
+                            <button type="button" style="background-color: orange;margin-top: 88px;" onclick="addaccrights()">Add Access Rights</button>
 
                         </form> 
                       
                     </div>
-                    <div class="mdfn2" style="margin-left:7% ">
+                    <div class="fn2" style="margin-left:30% ">
                       <img src="../images/deny_access.png" alt="deny-access" width="200px" height="200px">
                       <br>
                       
@@ -196,13 +216,16 @@
                                 <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
                             </div>
                             <p>(Result)</p>
-                            <button type="button" onclick="removeaccrights()">Remove Access Rights</button>
+                            <button type="button" style="background-color: royalblue;" onclick="removeaccrights()">Remove Access Rights</button>
 
                         </form> 
                       
                     </div>
-                    
-                    <div class="sdfn3" style="margin-left: 7%">
+              </div>
+          </div> 
+          <div class="carousel-item container-fluid">
+                <div class="functions">
+                    <div class="fn1" style="margin-left: 10%">
 
                       <img src="../images/seckey.jpeg" alt="Grant permission" width="200px" height="200px">
                       <br>
@@ -215,14 +238,14 @@
                                 <input type="password" class="form-control" id="Pass" placeholder="Device ID">     
                             </div>
                             <p id="Grant-Result">(Result)</p>
-                            <button type="button" onclick="checkcorrect()">Permit</button>
+                            <button type="button" style="background-color: grey;margin-top: 80px;"onclick="checkcorrect()">Permit</button>
 
                         </form> 
                         
                     </div>
 
                     
-                    <div class="mdfn4" style="margin-left: 7.5%">
+                    <div class="fn2" style="margin-left: 30%">
                       <img src="../images/units.png" alt="units-consumed" width="200px" height="200px">
                       <br>
                       
@@ -234,7 +257,7 @@
                                 <input type="text" class="form-control" id="Units-Consumed" placeholder="Units consumed">     
                             </div>
                             <p>(Result)</p>
-                            <button type="button" onclick="unitsupdate()">Update</button>
+                            <button type="button" style="background-color: deepskyblue;margin-top: 50px;"onclick="unitsupdate()">Update</button>
 
                         </form> 
                       
@@ -242,8 +265,36 @@
                 </div>
               </div>
             </div>
-          </div>
-  </section>
+            <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+            </a>
+      </div>
 
+
+  </section>
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <span class="close" id="close">&times;</span> -->
+        <h2>Transaction </h2>
+      </div>
+      <div class="modal-body">
+        
+        <p class="modal-text" id="modal-text">""</p>
+      </div>
+      <div class="modal-footer">
+        <p>Click anywhere to close notification</p>
+      </div>
+    </div>
+    
+  </div>
   </body>
 </html>
