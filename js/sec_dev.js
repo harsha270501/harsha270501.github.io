@@ -11,13 +11,13 @@ var adddev = web3.eth.subscribe('logs', {
                 var ini="0x";
                 var res1=ini.concat(datar.slice(2,66));
                 var res2=ini.concat(datar.slice(66));
-                console.log(res1); //house owner address
-                console.log(res2); //house id
+                console.log(res1); //house id
+                console.log(res2); //device id
                 
                 
                 console.log(account);
               
-                if(res1==account){
+                if(checkhousereg(res1))
                     confirmationPopUp("Security Device ID: ".concat(res2));
                     adddevfn(res1,res2);
                 }
@@ -29,6 +29,27 @@ var adddev = web3.eth.subscribe('logs', {
                  }
          });
 
+
+function checkhousereg(hid){
+         var bval=false;
+    try
+    {
+        var myContract=new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+        myContract.methods.add_dev(hid).call(function(err,result){
+            if(err)
+                console.log(err);
+            else
+            {
+                     console.log(result);
+                     bval=result;
+            }
+
+        });
+    }
+    catch(err)
+    {    console.log(err);}
+         return bval;
+}
 
 function adddevfn(r1,r2){
     try
