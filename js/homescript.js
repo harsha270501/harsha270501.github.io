@@ -1,119 +1,56 @@
 web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws/v3/cbd9dc11b30147e9a2cc974be655ef7c"));
-         
+
+var ac1;  
 
 var hid="";
 
 var addhouse = web3.eth.subscribe('logs', {
-             address: '0xfe388911e1039a4ea1f62a90282d2a2b15e95bc1',
+             address: '0x6457969927bf340f172982B9410C23BE0FBe51dc',
              topics: ['0x45ba5d56a78cb3aa5e0e3143eb70f7ed5f9522f64b1b2f327e0f5e0a6ae7e32c']
              }, function(error, result){
              console.log("inside if");   
              if (!error)
              {
-                console.log(result.data);
+                var datar=result.data;
+                var ini="0x";
+                var res1=ini.concat(datar.slice(26,66));
+                var res2=ini.concat(datar.slice(66));
+                console.log(res1); //house owner address
+                console.log(res2); //house id
                 
-             }
-             else
-             {
-                console.log(error);
-             }
+                
+                console.log(account);
+              
+                if(res1==account){
+                    confirmationPopUp("House ID: ".concat(res2));
+                    addhousefn(res1,res2);
+                }
+                 
+            }
+            else
+                 {
+                    console.log(error);
+                 }
          });
 
-var changehouseown = web3.eth.subscribe('logs', {
-             address: '0xBD6AfA8624AA823a230D744052bAA1Fc01659A1A',
-             topics: ['0x1600d01ae781bd9743365c99ba3e36031bc1855d20ade3e40b144b79058540aa']
-             }, function(error, result){
-             console.log("inside if");   
-             if (!error)
-             {
-                console.log(hexToString (result.data));
-                try 
-                {
-                // contract Abi defines all the variables,constants and functions of the smart contract. replace with your own abi
-                //instantiate and connect to contract address via Abi
-                var myContract = new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
-        
-                //call the get function of our Issuer contract
-                
-                var res;
-                res=result.data;
-                var old=res[0];
-                var newn=res[1];
-                var newa=res[2];
-                var h=res[3];
-                myContract.methods.change_house_own(old,newn,newa,h).send(function (err, result) 
-                {
-                    if (err) 
-                    { 
-                        console.log(err);
-                    }
-                    if (result) 
-                    {
-                        //display value on the webpage
-                        console.log(result[1]);
-                        
-                    }
-                });
 
-                
-                }
-                catch (err) 
-                {
+function addhousefn(r1,r2){
+    try
+    {
+        var myContract=new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+        myContract.methods.add_house(r1,r2).send(function(err,result){
+            if(err)
                 console.log(err);
-                }
-             }
-             else
-             {
-                console.log(error);
-             }
-         });
+            else
+                console.log(result);
 
-var addsdev = web3.eth.subscribe('logs', {
-             address: '0xae7Cf917FAa546E2dC415413fbAD9d1bF37EE624',
-             topics: ['0x82b3fb8d07b3113d1dc3f91acfd77b2e6fb693d77ee32bdaa79b19144d1fba7e']
-             }, function(error, result){
-             console.log("inside if");   
-             if (!error)
-             {
-                console.log(hexToString (result.data));
-                try 
-                {
-                // contract Abi defines all the variables,constants and functions of the smart contract. replace with your own abi
-                //instantiate and connect to contract address via Abi
-                var myContract = new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
-        
-                //call the get function of our Issuer contract
-                
-                var res;
-                res=result.data;
-                var h=res[0];
-                var uid=res[1];
-                myContract.methods.add_dev(h,uid).send(function (err, result) 
-                {
-                    if (err) 
-                    { 
-                        console.log(err);
-                    }
-                    if (result) 
-                    {
-                        //display value on the webpage
-                        console.log(result[1]);
-                        
-                    }
-                });
+        });
+    }
+    catch(err)
+    {    console.log(err);}
+    
+}
 
-                
-                }
-                catch (err) 
-                {
-                console.log(err);
-                }
-             }
-             else
-             {
-                console.log(error);
-             }
-         });
 
     
     function hexToString (hex) 
@@ -130,6 +67,13 @@ var addsdev = web3.eth.subscribe('logs', {
         {
             console.log("Registering the HS");
 
+            web3.eth.getAccounts().then(e => { ac1=e[0];
+                 console.log(e[0]);
+                 console.log("Acc1");
+                 console.log(ac1);
+                 console.log("Acc2");
+                }); 
+
             try 
             {
                 // contract Abi defines all the variables,constants and functions of the smart contract. replace with your own abi
@@ -144,6 +88,7 @@ var addsdev = web3.eth.subscribe('logs', {
         
                 myContract.methods.home_register(loc,ownname,currname,curraddr).send(function (err, result) 
                 {
+                    
                     if (err) 
                     { 
                         console.log(err);
@@ -151,17 +96,12 @@ var addsdev = web3.eth.subscribe('logs', {
                     if (result) 
                     {
                         //display value on the webpage
-                        console.log(result[1]);
-                        var r=result[1];
-                        console.log(web3.eth.getTransactionReceipt(result));
-                        document.getElementById('registerresult').innerHTML=r;
+                        console.log(result);
+                        
+    
                     }
                 });
 
-                 document.getElementById("House-Location").reset();
-                 document.getElementById("Owner-Name").reset();
-                 document.getElementById("Current-Occupant-Name").reset();
-                 document.getElementById("Current-Occupant-Address").reset();
             }
             catch (err) 
             {
@@ -269,6 +209,7 @@ var addsdev = web3.eth.subscribe('logs', {
                     {
                         //display value on the webpage
                         console.log(result);
+                        confirmationPopUp(result);
                     }
                 });
             }
@@ -321,3 +262,51 @@ var addsdev = web3.eth.subscribe('logs', {
               console.log(err);
             }
         }
+
+function houserental(){
+            // body...
+            
+            try 
+            {
+                // contract Abi defines all the variables,constants and functions of the smart contract. replace with your own abi
+                //instantiate and connect to contract address via Abi
+                var myContract = new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+                
+                //call the get function of our Issuer contract
+                
+                var houseid = document.getElementById("House-ID").value;
+                var newown = document.getElementById("New-Owner-Name").value;
+                var newownaddr = document.getElementById("New-Owner-Address").value;
+                myContract.methods.transfer_house(newown,newownaddr,houseid).send(function (err, result) 
+                {
+                    if (err) 
+                    { 
+                        console.log(err);
+                    }
+                    if (result) 
+                    {
+                        //display value on the webpage
+                        console.log(result);
+                    }
+                });
+
+            }
+            catch (err) 
+            {
+              console.log(err);
+            }
+
+        }
+//Event functions
+        
+        
+function confirmationPopUp(result) {
+  document.getElementById("modal-text").innerHTML = result;
+  document.getElementById("myModal").style.display = "block";
+}
+
+window.addEventListener("click",function (event) {
+  if (event.target == document.getElementById("myModal")) {
+    document.getElementById("myModal").style.display = "none";
+  }
+});
