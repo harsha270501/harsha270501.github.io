@@ -1,5 +1,5 @@
 web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws/v3/cbd9dc11b30147e9a2cc974be655ef7c"));
-         
+var bval=false;     
 var adddev = web3.eth.subscribe('logs', {
              address: '0x4B2c943a533936654A2599bF7bf4a80f3b32f5eD',
              topics: ['0x82b3fb8d07b3113d1dc3f91acfd77b2e6fb693d77ee32bdaa79b19144d1fba7e']
@@ -16,8 +16,8 @@ var adddev = web3.eth.subscribe('logs', {
                 
                 
                 console.log(account);
-              
-                if(checkhousereg(res1)){
+                 console.log(bval);
+                if(bval==true){
                     confirmationPopUp("Security Device ID: ".concat(res2));
                     adddevfn(res1,res2);
                 }
@@ -31,7 +31,7 @@ var adddev = web3.eth.subscribe('logs', {
 
 
 function checkhousereg(hid){
-         var bval=false;
+         
     try
     {
         var myContract=new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
@@ -48,7 +48,7 @@ function checkhousereg(hid){
     }
     catch(err)
     {    console.log(err);}
-         return bval;
+         
 }
 
 function adddevfn(r1,r2){
