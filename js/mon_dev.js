@@ -2,38 +2,30 @@ web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws
          
 var mon_dev_id;
 
-    function hexToString (hex) 
-          {
-            var tobeconverted = '';
-            tobeconverted = parseInt(hex).toString();
-            console.log(tobeconverted);
-            return tobeconverted;
-          }
-  
-//Emit Function for Registration
-var register_mon = web3.eth.subscribe(
-  "logs",
-  {
-    address: mon_dev_sca,
-    topics: mon_dev_topics.reg,
-  },
-  function (error, result) 
-        {
-        if (!error)
+
+var bval=false;     
+var hid="";
+var adddev = web3.eth.subscribe('logs', {
+             address: '0x114Bc3FF0D609053a66cD7A000675d7B15A4a507',
+             topics: ['0xa3b22955044031d9700ff67d8bceaaffd00f924a47463de18ba2f16c6af82650']
+             }, function(error, result){
+             console.log("inside if");   
+             if (!error)
              {
                 var datar=result.data;
                 var ini="0x";
                 var res1=ini.concat(datar.slice(2,66));
                 var res2=ini.concat(datar.slice(66));
-                console.log(res2); //house id
-                console.log(res1); //device id
+                console.log(res1); //house id
+                console.log(res2); //device id
                 
                 
                 console.log(account);
-              
-                if(checkhousereg(res2)){
-                    confirmationPopUp("Monitoring Device ID: ".concat(res1));
-                    adddevfn(res2,res1);
+                 console.log(bval);
+               checkhousereg(res1);
+                if(bval==true){
+                    confirmationPopUp("Security Device ID: ".concat(res2));
+                    adddevfn(res1,res2);
                 }
                  
             }
@@ -45,11 +37,11 @@ var register_mon = web3.eth.subscribe(
 
 
 function checkhousereg(hid){
-         var bval=false;
+         
     try
     {
         var myContract=new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
-        myContract.methods.add_dev(hid).call(function(err,result){
+        myContract.methods.isHouseExists(hid).call(function(err,result){
             if(err)
                 console.log(err);
             else
@@ -62,7 +54,7 @@ function checkhousereg(hid){
     }
     catch(err)
     {    console.log(err);}
-         return bval;
+         
 }
 
 function adddevfn(r1,r2){
@@ -81,15 +73,21 @@ function adddevfn(r1,r2){
     {    console.log(err);}
     
 }
+    function hexToString (hex) 
+          {
+            var tobeconverted = '';
+            tobeconverted = parseInt(hex).toString();
+            console.log(tobeconverted);
+            return tobeconverted;
+          }
+  
 
 
 //Emit function for Emergency
-var emergency_mon = web3.eth.subscribe(
-  "logs",
-  {
-    address: mon_dev_sca,
-    topics: mon_dev_topics.emrg,
-  },
+var emergency_mon = web3.eth.subscribe('logs', {
+             address: '0x114Bc3FF0D609053a66cD7A000675d7B15A4a507',
+             topics: ['0x32e7399906561f7bfc72dac3412790f6ac770339cd768936dcf5c7ec126eba47']
+             }, 
   function (error, result) {
     console.log("inside if");
     if (!error) {
@@ -122,7 +120,7 @@ var emergency_mon = web3.eth.subscribe(
                     if (result) 
                     {
                         console.log(result);
-                        confirmationPopUp(result);
+                        //confirmationPopUp(result);
                     }
                 });
 
