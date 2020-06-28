@@ -2,7 +2,46 @@ web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws
          
 var smart_mtr_id;
 
-    
+
+//Emit Function for Registration
+var register_mtr = web3.eth.subscribe(
+  "logs",
+  {
+    address: smart_mtr_sca,
+    topics: smart_mtr_topics.reg,
+  },
+  function (error, result) {
+    console.log("inside if");
+    if (!error) {
+      console.log(result.data.slice(67));
+      try {
+
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      console.log(error);
+    }
+  }
+);
+
+//Emit function for units consumed
+var unit_consumed = web3.eth.subscribe(
+  "logs",
+  {
+    address: smart_mtr_sca,
+    topics: smart_mtr_topics.token,
+  },
+  function (error, result) {
+    console.log("inside if");
+    if (!error) {
+      console.log(result.data);
+    } else {
+      console.log(error);
+    }
+  }
+);
+
     function hexToString (hex) 
           {
             var tobeconverted = '';
@@ -109,6 +148,37 @@ var smart_mtr_id;
 
         }
 
+        function update(smart_mtr_id,smart_mtr_units)
+        {
+            try 
+            {
+ 
+                var myContract = new web3.eth.Contract(smart_mtr_abi,smart_mtr_sca, {from: account, gasPrice: '5000000', gas:'3000000'});
+                
+                //var smart_mtr_units = document.getElementById("units_units_consumed").value;
+                //var smart_mtr_id = document.getElementById("units_mtr_id").value;
+               
+                myContract.methods.update_units(smart_mtr_id,smart_mtr_units).send(function (err, result) 
+                {
+                    if (err) 
+                    { 
+                        console.log(err);
+                        
+                    }
+                    if (result) 
+                    {
+                        console.log(result);
+                        confirmationPopUp(result);
+                    }
+                });
+
+            }
+            catch (err) 
+            {
+              console.log(err);
+            }
+   
+        }
 
         function smart_mtr_units(){
             
@@ -117,10 +187,10 @@ var smart_mtr_id;
  
                 var myContract = new web3.eth.Contract(smart_mtr_abi,smart_mtr_sca, {from: account, gasPrice: '5000000', gas:'3000000'});
                 
-                var smart_mtr_units = document.getElementById("units_units_consumed").value;
+                //var smart_mtr_units = document.getElementById("units_units_consumed").value;
                 var smart_mtr_id = document.getElementById("units_mtr_id").value;
                
-                myContract.methods.tot_units_con(smart_mtr_units,smart_mtr_id).send(function (err, result) 
+                myContract.methods.tot_units_con(smart_mtr_id).send(function (err, result) 
                 {
                     if (err) 
                     { 
@@ -224,17 +294,19 @@ var smart_mtr_id;
 
         }
 
-                                function mtr_display()
-                                {
-                                  var x = document.getElementById("mtr_details");
-                                    x.style.display = "block";
-                                }
+function mtr_display()
+{
+    var x = document.getElementById("mtr_details");
+    x.style.display = "block";
+}
 
-function confirmationPopUp(result) {
+function confirmationPopUp(result) 
+{
   document.getElementById("modal-text").innerHTML = result;
   document.getElementById("myModal").style.display = "block";
 }
-window.onclick = function (event) {
+window.onclick = function (event) 
+{
   if (event.target == document.getElementById("myModal")) {
     document.getElementById("myModal").style.display = "none";
   }
