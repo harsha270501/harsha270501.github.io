@@ -1946,14 +1946,8 @@ var mon_dev_abi=
 		"type": "function"
 	}
 ]
+var mon_dev_sca = '0x114Bc3FF0D609053a66cD7A000675d7B15A4a507'; 
 
-
-var mon_dev_sca = '0x0c9D4008DdC91409aFabaFe6b6211D83313591f1'; 
-
-var mon_dev_topics = {
-  reg:"0xa3b22955044031d9700ff67d8bceaaffd00f924a47463de18ba2f16c6af82650",
-  emerg:"0x32e7399906561f7bfc72dac3412790f6ac770339cd768936dcf5c7ec126eba47"
-};
 
 
 var smart_mtr_abi=
@@ -2173,7 +2167,4 @@ var smart_mtr_abi=
 ]
 
 var smart_mtr_sca = '0xBefd306b8d2a581c1D5F0B4156dDE66729C49a3E'; 
-
-
-
 
