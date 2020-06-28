@@ -106,7 +106,25 @@
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">I agree to terms and conditions</label>
                   </div>
-                  <button type="button" class="btn btn-primary" onclick="registerUser()">Submit</button>
+                  <p id="mon_text" style="display:none">Plese click on the checkbox to continue..</p>
+
+                  <button type="button" class="btn btn-primary" onclick="mon_check_box()">Submit</button>
+                   <script>
+                          
+                                function mon_check_box() 
+                                {
+                                  var checkBox = document.getElementById("mon_check");
+                                  var mon_text = document.getElementById("mon_text");
+                                  if (checkBox.checked == false){
+                                    mon_text.style.display = "block";
+                                  } else {
+                                     mon_text.style.display = "none";
+                                     registerUser();
+                                  }
+                                }
+
+                          
+                          </script>
                   </form>
                 </div>
               </div>
@@ -131,7 +149,7 @@
                 <br>
                 <div class="functions">
                     
-                    <div class="usfn1">
+                    <div class="fn1" style="margin-left: 40%;">
                       <img src="../images/transfer%20house.jpg" alt="transfer-house" width="300px" height="300px">
                       <br>
                       
@@ -162,6 +180,26 @@
             </div>
           </div>
   </section>
+
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <span class="close" id="close">&times;</span> -->
+        <h2>Transaction Confirmation</h2>
+      </div>
+      <div class="modal-body">
+        
+        <p class="modal-text" id="modal-text">""</p>
+      </div>
+      <div class="modal-footer">
+        <p>Click anywhere to close notification</p>
+      </div>
+    </div>
+    
+  </div>
 
   </body>
 </html>
