@@ -258,8 +258,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
 
         }*/
 
-        function mon_dev_emerg(){
-            
+        function mon_dev_emerg(){ 
             try 
             {
  
