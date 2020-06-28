@@ -12,6 +12,7 @@ var smart_mtr_id;
           }
         
 
+
         function smart_mtr_register()
         {
             console.log("Registering the Smart Meter");
@@ -33,6 +34,8 @@ var smart_mtr_id;
                     if (result) 
                     {
                         console.log(result);
+                        console.log(result[0]);
+                        confirmationPopUp(result);
                     }
                 });
 
@@ -64,6 +67,7 @@ var smart_mtr_id;
                     }
                     if (result) 
                         console.log(result);
+                        confirmationPopUp(result);
                     }
                 );
 
@@ -93,6 +97,7 @@ var smart_mtr_id;
                     if (result) 
                     {
                         console.log(result);
+                        confirmationPopUp(result);
                     }
                 });
 
@@ -125,6 +130,7 @@ var smart_mtr_id;
                     if (result) 
                     {
                         console.log(result);
+                        confirmationPopUp(result);
                     }
                 });
 
@@ -156,6 +162,7 @@ var smart_mtr_id;
                     if (result) 
                     {
                         console.log(result);
+                        confirmationPopUp(result);
                     }
                 });
 
@@ -166,3 +173,69 @@ var smart_mtr_id;
             }
 
         }
+
+
+        function retrieve_mtr_details(){
+            
+            try 
+            {
+ 
+                var myContract = new web3.eth.Contract(smart_mtr_abi,smart_mtr_sca, {from: account, gasPrice: '5000000', gas:'3000000'})
+                
+                var smart_mtr_id = document.getElementById("det_mtr_id").value;
+                
+                myContract.methods.retrieve_mtr_dev_details(smart_mtr_id).call(function (err, result) 
+                {
+                    if (err) 
+                    { 
+                        console.log(err);
+                        
+                    }
+                    if (result) 
+                    {
+                        //display value on the webpage
+                        console.log(result);
+                        confirmationPopUp(result);
+                        mtr_details();
+                        document.getElementById("r1").innerHTML=result[0];
+                        var r=result[1];
+                        var res;
+                        if(r=="0")
+                            res="SMETS1";
+                        else if(r=="1")
+                            res="SMETS2"
+                        else if(r=="2")
+                            res="NET"
+                        else if(r=="3")
+                            res="BIDERICTIONAL"
+                        else
+                            res="DUAL"
+                        document.getElementById("r2").innerHTML=res;
+                        document.getElementById("r3").innerHTML=result[2];
+                        document.getElementById("r4").innerHTML=result[3];
+                    }
+                });
+
+            }
+            catch (err) 
+            {
+              console.log(err);
+            }
+
+        }
+
+                                function mtr_display()
+                                {
+                                  var x = document.getElementById("mtr_details");
+                                    x.style.display = "block";
+                                }
+
+function confirmationPopUp(result) {
+  document.getElementById("modal-text").innerHTML = result;
+  document.getElementById("myModal").style.display = "block";
+}
+window.onclick = function (event) {
+  if (event.target == document.getElementById("myModal")) {
+    document.getElementById("myModal").style.display = "none";
+  }
+};
