@@ -13,7 +13,7 @@ function hexToString(hex) {
 }
 //get details
 function getdetails() {
-  ut_dev_id = document.getElementById("ut-dev-id").value;
+  ut_dev_id = document.getElementById("ut_dev_id").value;
   console.log(ut_dev_id);
   try {
     var myContract = new web3.eth.Contract(utdevAbi, utdevAddr, {
@@ -40,7 +40,7 @@ function getdetails() {
         }
       });
 
-    document.getElementById("ut-dev-id").reset();
+    document.getElementById("ut_dev_id").reset();
   } catch (err) {
     console.log(err);
   }
