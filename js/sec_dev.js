@@ -34,7 +34,7 @@ function checkhousereg(hid){
          var bval=false;
     try
     {
-        var myContract=new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+        var myContract=new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
         myContract.methods.add_dev(hid).call(function(err,result){
             if(err)
                 console.log(err);
