@@ -266,7 +266,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
                 var myContract = new web3.eth.Contract(mon_dev_abi,mon_dev_sca, {from: account, gasPrice: '5000000', gas:'3000000'})
                 var mon_dev_id = document.getElementById("det_mon_dev_id").value;
                 
-                myContract.methods.emerg(mon_dev_id).call(function (err, result) 
+                myContract.methods.retrieve_mon_dev_details(mon_dev_id).call(function (err, result) 
                 {
                     if (err) 
                     { 
