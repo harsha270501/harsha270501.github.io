@@ -121,7 +121,7 @@ function adddevfn(r1,r2){
                 catch(err){
                     console.log(err);
                 }          
-
+                console.log(res);
                 if(res)
                 {
                     myContract.methods.sec_dev_reg(hid,sdevkey,sdevtype).send(function (err, result) 
