@@ -39,6 +39,12 @@
       src="https://kit.fontawesome.com/04a54148ef.js"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function display(){
+        document.getelementbyID("display-details").style.display="block";
+        getdetails();
+      }
+    </script> 
 
     <!--web3-->
     <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
@@ -150,12 +156,12 @@
                    <input type="text" class="form-control" id="home-choices-id" placeholder="House-Id" style="width:50%;text-align: center;margin-left: 27.5%;">     
                 </div>
                 
-                <button type="button" class="btn btn-primary" onclick="getdetails()">Submit</button>
+                <button type="button" class="btn btn-primary" onclick="display()">Submit</button>
 
           </form> 
       </div> 
       <br>
-      <div class="display details" style="text-align: center;">
+      <div class="display details" id="display-det" style="text-align: center;display:none;">
         <h6>House Location :</h6><p align="center" id="r1">..</p>
         <h6>House Owner Name :</h6><p align="center" id="r2">..</p>
         <h6>House  Owner Address :</h6><p align="center" id="r3">..</p>
