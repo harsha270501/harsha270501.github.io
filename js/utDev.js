@@ -40,7 +40,7 @@ function getdetails() {
         }
       });
 
-    document.getElementById("ut_dev_id").reset();
+    document.getElementById("ut-dev-id").reset();
   } catch (err) {
     console.log(err);
   }
@@ -92,7 +92,6 @@ var registerUtDev = web3.eth.subscribe(
     }
   }
 );
-
 //function to Register
 function utRegister() {
   event.preventDefault();
