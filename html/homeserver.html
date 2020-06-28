@@ -40,14 +40,15 @@
       crossorigin="anonymous"
     ></script>
 
+    <!--web3-->
+    <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
+    <script type="text/javascript" src="../js/abi.js"></script>
+    <script type="text/javascript" src="../js/web3i.js"></script>
+    <script type="text/javascript" src="../js/homescript.js"></script>
+    
     <!--CSS-->
     <link rel="stylesheet" href="../css/styles.css" />
 
-    <!--JS-->
-    <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
-    <script src="../js/emrgDev.js"></script>
-    <script type="text/javascript" src="../js/web3i.js"></script>
-    <script type="text/javascript" src="../js/abi.js"></script>
   </head>
   <body>
     
@@ -76,7 +77,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-bar-text" href="#dashboarded">Dashboard</a>
+              <a class="nav-link nav-bar-text" href="#dashboard">Dashboard</a>
             </li>
         </div>
       </navbar>
@@ -86,34 +87,52 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col col-lg-12">
-              <div class="reg-box" id="reg-box">
-                <div class="reg-form" id="reg-form">
-                  <img src="../images/EmrgDev%20Icon%20-1.png" width="50px" height="50px">
-                  <h3>Emergency Device Registration</h3><br><br>
+              <div class="reg-box" id="reg-box" style="width: 500px">
+                <div class="reg-form" id="reg-form" style="width:400px">
+                  <img src="../images/Home Icon -1.png" width="50px" height="50px">
+                  <h3>Homeserver Registration</h3><br><br>
                   <form>
                   <div class="form-group">
-                      <label for="House-ID1">House ID</label>
-                      <input type="text" class="form-control" id="House-ID1" placeholder="House ID">     
+                      <label for="House-Location">House Location</label>
+                      <input type="text" class="form-control" id="House-Location" placeholder="House Location">     
                   </div>
-                      
-                <div class="form-group">
-                    <label for="Emergency Device Type">Emergency Device Type</label>
-                    <br>
-                    <select id="Emergency Device Type" name="Emergency Device type">
-                        <option value="FA">Fire Alarm</option>
-                        <option value="BA">Burglar Alarm</option>
-                    </select>
-                </div> 
-                      
                   <div class="form-group">
-                      <label for="Device-Rating">Device Rating</label>
-                      <input type="text" class="form-control" id="Device-Rating" placeholder="Device Rating">
+                      <label for="Owner-Name">Owner Name</label>
+                      <input type="text" class="form-control" id="Owner-Name" placeholder="Owner Name">     
+                  </div>
+                  <div class="form-group">
+                      <label for="Current-Occupant-Name">Current Occupant Name</label>
+                      <input type="text" class="form-control" id="Current-Occupant-Name" placeholder="Current Occupant Name">
+                  </div>
+                  <div class="form-group">
+                      <label for="Current-Occupant-Address">Current Occupant Address</label>
+                      <input type="text" class="form-control" id="Current-Occupant-Address" placeholder="Enter a valid wallet (metamask) address">
+
                   </div>
                   <div class="form-group form-check">
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">I agree to terms and conditions</label>
                   </div>
-                  <button type="submit" class="btn btn-primary" onclick="emrgRegister()">Submit</button>
+                   <p id="mon_text" style="display:none">Plese click on the checkbox to continue..</p>
+
+                  <button type="button" class="btn btn-primary" onclick="mon_check_box() ">Submit</button>
+                   <script>
+                          
+                                function mon_check_box() 
+                                {
+                                  var checkBox = document.getElementById("mon_check");
+                                  var mon_text = document.getElementById("mon_text");
+                                  if (checkBox.checked == false){
+                                    mon_text.style.display = "block";
+                                  } else {
+                                     mon_text.style.display = "none";
+                                     registerHS();
+                                  }
+                                }
+
+                          
+                          </script>
+                  <p id="registerresult">..</p>
                   </form>
                 </div>
               </div>
@@ -122,254 +141,142 @@
         </div>
     </section>
 
-    <!-- <section id="">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col col-lg-12">
-                <div class="choose-home">
-                  <select class="home-choices">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+    <section id="dashboard">
+     
+      <div class="choose-home">
+          <form>
+                <div class="form-group">
+                   <label for="House-Id">House ID</label>
+                   <input type="text" class="form-control" id="home-choices-id" placeholder="House-Id" style="width:50%;text-align: center;margin-left: 27.5%;">     
                 </div>
-                <br>
-                <div class="display details">
-                  <h5 align="center"> (Details about the selected Emergency Device will be displayed here)</h5>
-                </div>
-                <br>
-                <div class="functions">
-                    <div class="mdfn1">
-                      <img src="../images/Access.png" alt="grant-access" width="200px" height="200px">
-                      <br>
-                      
-                        <h4>Grant Access Rights</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID1">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID1" placeholder="Device ID">     
-                            </div>
-                            <div class="form-group">  
-                                <label for="Address1">Address</label>
-                                <input type="text" class="form-control" id="Address1" aria-describedby="addrHelp" placeholder="Address">
-                                <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                            </div>
-                            <p>(Result)</p>
-                            <button type="submit" onclick="grantAccessRights()">Add Access Rights</button>
+                
+                <button type="button" class="btn btn-primary" onclick="getdetails()">Submit</button>
 
-                        </form> 
-                      
-                    </div>
-                    <div class="mdfn2">
-                      <img src="../images/deny_access.png" alt="deny-access" width="200px" height="200px">
-                      <br>
-                      
-                        <h4>Remove Access Rights</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID2">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID2" placeholder="Device ID">     
-                            </div>
-                            <div class="form-group">  
-                                <label for="Address2">Address</label>
-                                <input type="text" class="form-control" id="Address2" aria-describedby="addrHelp" placeholder="Address">
-                                <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                            </div>
-                            <p>(Result)</p>
-                            <button type="submit" onclick="removeAccessRights()">Remove Access Rights</button>
-
-                        </form> 
-                      
-                    </div>
-                    
-                    <div class="mdfn3">
-
-                      <img src="../images/Emergency.jpg" alt="detect-emergency" width="200px" height="200px">
-                      <br>
-                      
-                        <h4>Detect Emergency</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID3">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID3" placeholder="Device ID">     
-                            </div>
-                            <div class="form-group">  
-                                <label for="House-ID2">House ID</label>
-                                <input type="text" class="form-control" id="House-ID2" aria-describedby="addrHelp" placeholder="House ID">
-                                <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                            </div>
-                            
-                            <p>(Result)</p>
-                            <button type="submit" onclick="detectEmergency()">Check</button>
-
-                        </form> 
-                        
-                    </div>
-
-                    
-                    <div class="mdfn4">
-                      <img src="../images/units.png" alt="units-consumed" width="200px" height="200px">
-                      <br>
-                      
-                        <h4>Update Units Consumed</h4>
-                        <form>
-                            <div class="form-group">
-                                <label for="Device-ID4">Device ID</label>
-                                <input type="text" class="form-control" id="Device-ID4" placeholder="Device ID">     
-                            </div>
-                            <div class="form-group">
-                                <label for="Units-Consumed">Units consumed</label>
-                                <input type="text" class="form-control" id="Units-consumed" placeholder="Units consumed">     
-                            </div>
-                            <p id="result">(Result)</p>
-                            <button type="submit" onclick="emrgReadUnitsConsumed()">Update</button>
-
-                        </form> 
-                      
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-  </section> -->
-  <section id="dashboarded" class="">
-    <div class="choose-home">
-      <select class="home-choices">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-    <br>
-    <div class="display details">
-      <h5 align="center"> (Details about the selected Emergency Device will be displayed here)</h5>
-    </div>
-    <br>
-    
-    <div
-      id="testimonial-carousel"
-      class="carousel slide"
-      data-ride="carousel"
-    >
+          </form> 
+      </div> 
+      <br>
+      <div class="display details" style="text-align: center;">
+        <h6>House Location :</h6><p align="center" id="r1">..</p>
+        <h6>House Owner Name :</h6><p align="center" id="r2">..</p>
+        <h6>House  Owner Address :</h6><p align="center" id="r3">..</p>
+        <h6>House Current Occupant Name :</h6><p align="center" id="r4">..</p>
+        <h6>House Current Occupant Address :</h6><p align="center" id="r5">..</p>
+        <h6>House Rent :</h6><p align="center" id="r6">..</p>
+        
+        
+      </div>
+      <br>
+    <div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active container-fluid">
-          <div class="udfn1">
-            <img src="../images/Access.png" alt="grant-access" width="200px" height="200px">
-            <br>
-            
-              <h4>Grant Access Rights</h4>
-              <form>
-                  <div class="form-group">
-                      <label for="Device-ID1">Device ID</label>
-                      <input type="text" class="form-control" id="Device-ID1" placeholder="Device ID">     
-                  </div>
-                  <div class="form-group">  
-                      <label for="Address1">Address</label>
-                      <input type="text" class="form-control" id="Address1" aria-describedby="addrHelp" placeholder="Address">
-                      <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                  </div>
-                  <p>(Result)</p>
-                  <button type="submit" onclick="grantAccessRights()" style="background-color: #f9b233;">Add Access Rights</button>
-
-              </form> 
-            
-          </div>
-
-          <div class="udfn2">
-            <img src="../images/deny_access.png" alt="deny-access" width="200px" height="200px">
-            <br>
-            
-              <h4>Remove Access Rights</h4>
-              <form>
-                  <div class="form-group">
-                      <label for="Device-ID2">Device ID</label>
-                      <input type="text" class="form-control" id="Device-ID2" placeholder="Device ID">     
-                  </div>
-                  <div class="form-group">  
-                      <label for="Address2">Address</label>
-                      <input type="text" class="form-control" id="Address2" aria-describedby="addrHelp" placeholder="Address">
-                      <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                  </div>
-                  <p>(Result)</p>
-                  <button type="submit" onclick="removeAccessRights()" style="background-color: #3069d1;">Remove Access Rights</button>
-
-              </form> 
-            
-          </div>
-        </div>
-        <div class="carousel-item container-fluid">
-          <div class="udfn1">
-
-            <img src="../images/Emergency.jpg" alt="detect-emergency" width="200px" height="200px">
-            <br>
-            
-              <h4>Detect Emergency</h4>
-              <form>
-                  <div class="form-group">
-                      <label for="Device-ID3">Device ID</label>
-                      <input type="text" class="form-control" id="Device-ID3" placeholder="Device ID">     
-                  </div>
-                  <div class="form-group">  
-                      <label for="House-ID2">House ID</label>
-                      <input type="text" class="form-control" id="House-ID2" aria-describedby="addrHelp" placeholder="House ID">
-                      <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
-                  </div>
-                  
-                  <p>(Result)</p>
-                  <button type="submit" onclick="detectEmergency()" style="background-color: #da5555;">Check</button>
-
-              </form> 
+          <div class="functions">
+            <div class="fn1">
+              <img src="../images/set-rent.png" alt="set-rent" width="200px" height="200px">
+              <br>
               
+                <h4>Set Rent Price</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="Rent-Amount (Rs)">Rent-Amount</label>
+                        <input type="text" class="form-control" id="Rent-Amount" placeholder="Rent Amount">     
+                    </div>
+                    <div class="form-group">
+                        <label for="Rent-Date">Rent-Date</label>
+                        <input type="text" class="form-control" id="Rent-Date" placeholder="Rent Date(dd)">     
+                    </div>
+                    <p>(Result)</p>
+                    <button type="button" onclick="setRent()">Set Rent</button>
+
+                </form> 
+              
+            </div>
+            <div class="fn2">
+              
+              <img src="../images/pay-rent.jpeg" alt="pay-rent" width="100px" height="100px" style="margin-top: 3%">
+              <hr>
+              <h4> Pay Rent </h4><br>
+              <p> Click the pay rent button. It is automatically transferred to the house owner</p>
+                <p>Note: Only the current occupant can pay the amount</p>
+                <p>(result)</p>
+              <button type="button" onclick="payRent()">Pay Rent</button>
+              
+            </div>
           </div>
+        </div> 
+        <div class="carousel-item container-fluid">
+          <div class="functions">
+            <div class="fn1">
+              <img src="../images/eco-factor.jpg" alt="eco-factor" width="200px" height="200px">
+              <br>
+              
+                <h4>Eco-Factor</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="LPG used">LPG used (in therm)</label>
+                        <input type="text" class="form-control" id="LPG used" placeholder="Rent Amount">     
+                    </div>
+                    <div class="form-group">
+                        <label for="Oil">Heating Oil Used (in therm)</label>
+                        <input type="text" class="form-control" id="Oil" placeholder="Rent Date">     
+                    </div>
+                    <div class="form-group">
+                        <label for="TokenID">TOKEN ID</label>
+                        <input type="text" class="form-control" id="TokenID" placeholder="Token ID">     
+                    </div>
+                    <p>(Result)</p>
+                    <button type="button" style="background-color: #aec300;margin-top: 120px;" onclick="ecoFactor(e)">Calculate</button>
 
+                </form> 
+              
+            </div>
+            <div class="fn1" style="margin-left: 40%;">
+                      <img src="../images/transfer%20house.jpg" alt="transfer-house" width="300px" height="300px">
+                      <br>
+                      
+                        <h4>Rental House</h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="House-ID">House ID</label>
+                                <input type="text" class="form-control" id="House-ID" placeholder="House ID">     
+                            </div>                        
+                            <div class="form-group">
+                                <label for="New-Owner-Name">New Occupant Name</label>
+                                <input type="text" class="form-control" id="New-Owner-Name" placeholder="New Owner Name">     
+                            </div>
+                            <div class="form-group">  
+                                <label for="New-Owner-Address">New Occupant Address</label>
+                                <input type="text" class="form-control" id="New-Owner-Address" aria-describedby="addrHelp" placeholder="New Owner Address">
+                                <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
+                            </div>
+                            <p id="House-Transfer-Result">(Result)</p>
+                            <button type="button" onclick="houserental()">Rent</button>
 
-          <div class="udfn2">
-            <img src="../images/units.png" alt="units-consumed" width="200px" height="200px">
-            <br>
-            
-              <h4>Update Units Consumed</h4>
-              <form>
-                  <div class="form-group">
-                      <label for="Device-ID4">Device ID</label>
-                      <input type="text" class="form-control" id="Device-ID4" placeholder="Device ID">     
+                        </form> 
+                      
+                    </div>
                   </div>
-                  <div class="form-group">
-                      <label for="Units-Consumed">Units consumed</label>
-                      <input type="text" class="form-control" id="Units-consumed" placeholder="Units consumed">     
-                  </div>
-                  <p id="result">(Result)</p>
-                  <button type="submit" onclick="emrgReadUnitsConsumed()" style="background-color: #00aeae;">Update</button>
+        </div>
+        
+                    
+              
+        <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+        </a>
+    
+  </div>
 
-              </form> 
-            
-          </div>
-      </div>
-      <a
-        class="carousel-control-prev"
-        href="#testimonial-carousel"
-        role="button"
-        data-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a
-        class="carousel-control-next"
-        href="#testimonial-carousel"
-        role="button"
-        data-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
+          
   </section>
 
-  <div id="emrg-myModal" class="modal">
+  <div id="myModal" class="modal">
 
     <!-- Modal content -->
+    
     <div class="modal-content">
       <div class="modal-header">
         <!-- <span class="close" id="close">&times;</span> -->
@@ -377,13 +284,13 @@
       </div>
       <div class="modal-body">
         
-        <p class="modal-text" id="emrg-modal-text">""</p>
+        <p class="modal-text" id="modal-text">""</p>
       </div>
       <div class="modal-footer">
         <p>Click anywhere to close notification</p>
       </div>
     </div>
-  
+    
   </div>
   </body>
 </html>
