@@ -45,7 +45,7 @@
       
     <!--web3-->
     <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
-    <script type="text/javascript" src="../js/mon_mtr_abi.js"></script>
+    <script type="text/javascript" src="../js/abi.js"></script>
     <script type="text/javascript" src="../js/web3i.js"></script>
     <script type="text/javascript" src="../js/smart_mtr.js"></script>
       
@@ -251,16 +251,18 @@
                       <img src="../images/meter%20reading.jpg" alt="total units-consumed" width="200px" height="200px">
                       <br>
                       
-                        <h4>Update Total Units Consumed by all devices</h4>
+                        <h4>Check Total Units Consumed by all devices</h4>
                         <form>
                             <div class="form-group">
                                 <label for="units_mtr_id">Meter ID</label>
                                 <input type="text" class="form-control" id="units_mtr_id" placeholder="Meter ID">     
                             </div>
-                            <div class="form-group">
+                            
+                            <!--<div class="form-group">
                                 <label for="units_units_consumed">Units consumed by all devices</label>
                                 <input type="number" class="form-control" id="units_units_consumed" placeholder="Total units in kWH">     
                             </div>
+                            -->
                             <p>(Result)</p>
                             <button type="button" onclick=" smart_mtr_units()" style="  background-color: darkgrey;margin-top: 29px;">Update</button>
 
