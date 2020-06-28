@@ -317,7 +317,7 @@ var unit_consumed = web3.eth.subscribe(
                         //display value on the webpage
                         console.log(result);
                         confirmationPopUp(result);
-                        mtr_details();
+                        mtr_display();
                         document.getElementById("r1").innerHTML=result[0];
                         var r=result[1];
                         var res;
