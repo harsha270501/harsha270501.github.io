@@ -17,7 +17,7 @@ var adddev = web3.eth.subscribe('logs', {
                 
                 console.log(account);
               
-                if(checkhousereg(res1))
+                if(checkhousereg(res1)){
                     confirmationPopUp("Security Device ID: ".concat(res2));
                     adddevfn(res1,res2);
                 }
