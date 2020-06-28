@@ -2,32 +2,29 @@ web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws
          
 var smart_mtr_id;
 
-
-//Emit Function for Registration
-var register_mtr = web3.eth.subscribe(
-  "logs",
-  {
-    address: smart_mtr_sca,
-    topics: ['0xdcca2fd466d95919391212a9e3c71b1ebabf78ac15dd2b33ce4531e03242be6c']
-};
-  },
-  function (error, result) 
-    {
-        if (!error)
+var bval=false;     
+var hid="";
+var adddev = web3.eth.subscribe('logs', {
+             address: '0xBefd306b8d2a581c1D5F0B4156dDE66729C49a3E',
+             topics: ['0xdcca2fd466d95919391212a9e3c71b1ebabf78ac15dd2b33ce4531e03242be6c']
+             }, function(error, result){
+             console.log("inside if");   
+             if (!error)
              {
                 var datar=result.data;
                 var ini="0x";
                 var res1=ini.concat(datar.slice(2,66));
                 var res2=ini.concat(datar.slice(66));
-                console.log(res2); //house id
-                console.log(res1); //device id
+                console.log(res1); //house id
+                console.log(res2); //device id
                 
                 
                 console.log(account);
-              
-                if(checkhousereg(res2)){
-                    confirmationPopUp("Samrt Meter ID: ".concat(res1));
-                    adddevfn(res2,res1);
+                 console.log(bval);
+               checkhousereg(res1);
+                if(bval==true){
+                    confirmationPopUp("Security Device ID: ".concat(res2));
+                    adddevfn(res1,res2);
                 }
                  
             }
@@ -39,11 +36,11 @@ var register_mtr = web3.eth.subscribe(
 
 
 function checkhousereg(hid){
-         var bval=false;
+         
     try
     {
         var myContract=new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
-        myContract.methods.add_dev(hid).call(function(err,result){
+        myContract.methods.isHouseExists(hid).call(function(err,result){
             if(err)
                 console.log(err);
             else
@@ -56,7 +53,7 @@ function checkhousereg(hid){
     }
     catch(err)
     {    console.log(err);}
-         return bval;
+         
 }
 
 function adddevfn(r1,r2){
@@ -75,6 +72,7 @@ function adddevfn(r1,r2){
     {    console.log(err);}
     
 }
+
 
 
 
@@ -126,8 +124,8 @@ var unit_consumed = web3.eth.subscribe(
                     if (result) 
                     {
                         console.log(result);
-                        console.log(result[0]);
-                        confirmationPopUp(result);
+                        //console.log(result[0]);
+                        //confirmationPopUp(result);
                     }
                 });
 
