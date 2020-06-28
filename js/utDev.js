@@ -3,7 +3,8 @@ web3 = new Web3(
     "wss://ropsten.infura.io/ws/v3/cbd9dc11b30147e9a2cc974be655ef7c"
   )
 );
-
+var ut_dev_id;
+var house_id;
 function hexToString(hex) {
   var tobeconverted = "";
   tobeconverted = parseInt(hex).toString();
@@ -11,10 +12,10 @@ function hexToString(hex) {
   return tobeconverted;
 }
 //Emit Function for Registration
-var registerEmrg = web3.eth.subscribe(
+var registerUtDev = web3.eth.subscribe(
   "logs",
   {
-    address: emrgdevAddr,
+    address: utdevAddr,
     topics: utDevTopics.reg,
   },
   function (error, result) {
@@ -22,44 +23,26 @@ var registerEmrg = web3.eth.subscribe(
     if (!error) {
       console.log(result.data.slice(67));
       try {
-        //    contract Abi defines all the variables,constants and functions of the smart contract. replace with your own abi
-        //    instantiate and connect to contract address via Abi
-        //   var myContract = new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
-        //    //call the get function of our Issuer contract
-        //    var res;
-        //    res=result.data;
-        //    myContract.methods.add_dev(result.data, emrgdevAddr).send(function (err, result)
-        //    {
-        // 	   if (err)
-        // 	   {
-        // 		   console.log(err);
-        // 	   }
-        // 	   if (result)
-        // 	   {
-        // 		   //display value on the webpage
-        // 		   console.log(result);
-        // 	   }
-        //    });
+        var myContract = new web3.eth.Contract(hsABI, hsSC, {
+          from: account,
+          gasPrice: "5000000",
+          gas: "3000000",
+        });
+        var res;
+        res = result.data;
+        myContract.methods
+          .add_dev(result.data.slice(2, 67), result.data.slice(67))
+          .send(function (err, result) {
+            if (err) {
+              console.log(err);
+            }
+            if (result) {
+              console.log(result);
+            }
+          });
       } catch (err) {
         console.log(err);
       }
-    } else {
-      console.log(error);
-    }
-  }
-);
-
-//Emit function for units consumed
-var unitConsumedEmrg = web3.eth.subscribe(
-  "logs",
-  {
-    address: emrgdevAddr,
-    topics: utDevTopics.unit,
-  },
-  function (error, result) {
-    console.log("inside if");
-    if (!error) {
-      console.log(result.data);
     } else {
       console.log(error);
     }
@@ -111,10 +94,9 @@ function grantAccessRights() {
       gas: "3000000",
     });
 
-    var device_id = document.getElementById("Device-ID1").value;
     var addr = document.getElementById("Address1").value;
     myContract.methods
-      .grant_access(addr, device_id)
+      .grant_access(addr, ut_dev_id)
       .send(function (err, result) {
         if (err) {
           console.log(err);
@@ -141,10 +123,9 @@ function removeAccessRights() {
       gas: "3000000",
     });
 
-    var device_id = document.getElementById("Device-ID2").value;
     var addr = document.getElementById("Address2").value;
     myContract.methods
-      .remove_access(addr, device_id)
+      .remove_access(addr, ut_dev_id)
       .send(function (err, result) {
         if (err) {
           console.log(err);
@@ -171,11 +152,27 @@ function utReadUnitsConsumed() {
       gas: "3000000",
     });
 
-    var device_id = document.getElementById("Device-ID4").value;
     var units_consumed = document.getElementById("Units-consumed").value;
 
     myContract.methods
-      .read_units_consumed(device_id, units_consumed)
+      .read_units_consumed(ut_dev_id, units_consumed)
+      .send(function (err, result) {
+        if (err) {
+          console.log(err);
+        }
+        if (result) {
+          console.log(result);
+          confirmationPopUp(result);
+        }
+      });
+    var smContract = new web3.eth.Contract(smart_mtr_abi, smart_mtr_sca, {
+      from: account,
+      gasPrice: "5000000",
+      gas: "3000000",
+    });
+
+    smContract.methods
+      .update_units(house_id, units_consumed)
       .send(function (err, result) {
         if (err) {
           console.log(err);
@@ -201,10 +198,9 @@ function lastServDate() {
       gas: "3000000",
     });
 
-    var device_id = document.getElementById("Device-ID3").value;
     var serviceDate = document.getElementById("Service-Date").value;
     myContract.methods
-      .service_device(device_id, serviceDate)
+      .service_device(ut_dev_id, serviceDate)
       .send(function (err, result) {
         console.log(result);
         if (err) {
@@ -219,7 +215,40 @@ function lastServDate() {
     console.log(err);
   }
 }
+//get details
+function getdetails() {
+  ut_dev_id = document.getElementById("ut-dev-id").value;
+  console.log(hid);
+  try {
+    var myContract = new web3.eth.Contract(utdevAbi, utdevAddr, {
+      from: account,
+      gasPrice: "5000000",
+      gas: "3000000",
+    });
 
+    myContract.methods
+      .retrieve_ut_dev_details(ut_dev_id)
+      .call(function (err, result) {
+        if (err) {
+          console.log(err);
+        }
+        if (result) {
+          var Arr = ["AC", "TV", "FR", "PC"];
+          console.log(result);
+          document.getElementById("r1").innerHTML = result[0];
+          house_id = document.getElementById("r1").innerHTML = result[0];
+          document.getElementById("r2").innerHTML = result[1];
+          document.getElementById("r3").innerHTML = Arr[result[2]];
+          document.getElementById("r4").innerHTML = result[3];
+          document.getElementById("display-div").className = "show";
+        }
+      });
+
+    document.getElementById("ut-dev-id").reset();
+  } catch (err) {
+    console.log(err);
+  }
+}
 function confirmationPopUp(result) {
   document.getElementById("ut-modal-text").innerHTML = result;
   document.getElementById("ut-myModal").style.display = "block";
