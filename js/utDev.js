@@ -14,7 +14,7 @@ function hexToString(hex) {
 //get details
 function getdetails() {
   ut_dev_id = $("#ut-dev-id").value;
-  console.log(hid);
+    console.log(ut_dev_id);
   try {
     var myContract = new web3.eth.Contract(utdevAbi, utdevAddr, {
       from: account,
