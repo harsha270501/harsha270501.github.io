@@ -8,7 +8,7 @@ var house_id;
 
 //get details
 function getdetails(){
-  emrg_dev_id=document.getElementById("emrg-dev-id").value;
+  emrg_dev_id=document.getElementById("emrg_dev_id").value;
   console.log(hid);
   try 
   {
@@ -34,7 +34,7 @@ function getdetails(){
           }
       });
 
-      document.getElementById("emrg-dev-id").reset();
+      document.getElementById("emrg_dev_id").reset();
   }
   catch (err) 
   {
