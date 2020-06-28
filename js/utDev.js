@@ -63,9 +63,14 @@ var registerUtDev = web3.eth.subscribe(
     topics: utDevTopics.reg,
   },
   function (error, result) {
+    var datar=result.data;
+    var ini="0x";
+    var res1=ini.concat(datar.slice(2,66));
+    var res2=ini.concat(datar.slice(66));
+    console.log(res1); //house id
+    console.log(res2); //device id
     console.log("inside if");
     if (!error) {
-      console.log(result.data.slice(67));
       try {
         var myContract = new web3.eth.Contract(hsABI, hsSC, {
           from: account,
@@ -75,7 +80,7 @@ var registerUtDev = web3.eth.subscribe(
         var res;
         res = result.data;
         myContract.methods
-          .add_dev(result.data.slice(2, 67), result.data.slice(67))
+          .add_dev(res1, res2)
           .send(function (err, result) {
             if (err) {
               console.log(err);
