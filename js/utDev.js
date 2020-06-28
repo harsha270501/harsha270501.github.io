@@ -100,7 +100,6 @@ var registerUtDev = web3.eth.subscribe(
 //function to Register
 function utRegister() {
   event.preventDefault();
-    console.log([utDevTopics.reg]);
   console.log("Inside Register Function");
 
   try {
