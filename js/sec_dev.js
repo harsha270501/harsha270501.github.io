@@ -103,9 +103,10 @@ function adddevfn(r1,r2){
                         if(result)
                         {
                             console.log(result);
-                            
-                            console.log(account);
-                            if(result==account)
+                            var acc;
+                           web3.eth.getAccounts().then(e => { acc=e[0];}) 
+                            console.log(acc);
+                            if(result==acc)
                             {
                                 res=true;
                             }
