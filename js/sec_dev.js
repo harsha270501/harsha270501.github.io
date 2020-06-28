@@ -105,7 +105,7 @@ function adddevfn(r1,r2){
                             console.log(result);
                             
                             console.log(account);
-                            if(result==acc)
+                            if(result==account)
                             {
                                 res=true;
                             }
