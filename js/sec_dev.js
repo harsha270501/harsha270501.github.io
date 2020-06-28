@@ -1,5 +1,51 @@
 web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws/v3/cbd9dc11b30147e9a2cc974be655ef7c"));
          
+var adddev = web3.eth.subscribe('logs', {
+             address: '0x4B2c943a533936654A2599bF7bf4a80f3b32f5eD',
+             topics: ['0x82b3fb8d07b3113d1dc3f91acfd77b2e6fb693d77ee32bdaa79b19144d1fba7e']
+             }, function(error, result){
+             console.log("inside if");   
+             if (!error)
+             {
+                var datar=result.data;
+                var ini="0x";
+                var res1=ini.concat(datar.slice(2,66));
+                var res2=ini.concat(datar.slice(66));
+                console.log(res1); //house owner address
+                console.log(res2); //house id
+                
+                
+                console.log(account);
+              
+                if(res1==account){
+                    confirmationPopUp("Security Device ID: ".concat(res2));
+                    adddevfn(res1,res2);
+                }
+                 
+            }
+            else
+                 {
+                    console.log(error);
+                 }
+         });
+
+
+function adddevfn(r1,r2){
+    try
+    {
+        var myContract=new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+        myContract.methods.add_dev(r1,r2).send(function(err,result){
+            if(err)
+                console.log(err);
+            else
+                console.log(result);
+
+        });
+    }
+    catch(err)
+    {    console.log(err);}
+    
+}
 
     function hexToString (hex) 
           {
