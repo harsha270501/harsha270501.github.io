@@ -6,7 +6,7 @@ var mon_dev_id;
 var bval=false;     
 var hid="";
 var adddev = web3.eth.subscribe('logs', {
-             address: '0x114Bc3FF0D609053a66cD7A000675d7B15A4a507',
+             address: '0xEE4603EA3f372026e00Ba691d0957c23BF492d48',
              topics: ['0xa3b22955044031d9700ff67d8bceaaffd00f924a47463de18ba2f16c6af82650']
              }, function(error, result){
              console.log("inside if");   
@@ -85,7 +85,7 @@ function adddevfn(r1,r2){
 
 //Emit function for Emergency
 var emergency_mon = web3.eth.subscribe('logs', {
-             address: '0x114Bc3FF0D609053a66cD7A000675d7B15A4a507',
+             address: '0xEE4603EA3f372026e00Ba691d0957c23BF492d48',
              topics: ['0x32e7399906561f7bfc72dac3412790f6ac770339cd768936dcf5c7ec126eba47']
              }, 
   function (error, result) {
