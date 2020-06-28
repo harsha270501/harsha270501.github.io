@@ -5,7 +5,7 @@ var ac1;
 var hid="";
 
 var addhouse = web3.eth.subscribe('logs', {
-             address: '0x6457969927bf340f172982B9410C23BE0FBe51dc',
+             address: '0x6f78992f89fc4640b465de5bba0bfd13559d64e3',
              topics: ['0x45ba5d56a78cb3aa5e0e3143eb70f7ed5f9522f64b1b2f327e0f5e0a6ae7e32c']
              }, function(error, result){
              console.log("inside if");   
