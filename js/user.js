@@ -62,13 +62,19 @@ var monitdevuser = web3.eth.subscribe('logs', {
          });
 
 var monitdevuser = web3.eth.subscribe('logs', {
-             address: '0xDB39318510c207DD7AA1710355662ff566380AB6',
+             address: '0x6457969927bf340f172982b9410c23be0fbe51dc',
              topics: ['0x3a1845651e7a8d3a375b0621f957e3ee336115e77933a34f16d8ccbefe31bf82']
              }, function(error, result){
              console.log("inside if");   
              if (!error)
              {
                 console.log(result.data);
+                var res=result.data;
+                var ini="0x";
+                var res1=ini.concat(res.slice(26,66));
+                var res2=ini.concat(res.slice(66,131));
+                var res3=parseInt(ini.concat(res.slice(131)));
+                
                 
              }
              else
@@ -111,6 +117,7 @@ var monitdevuser = web3.eth.subscribe('logs', {
                     {
                         //display value on the webpage
                         console.log(result);
+                        confirmationPopUp(result);
                     }
                 });
 
@@ -135,7 +142,7 @@ var monitdevuser = web3.eth.subscribe('logs', {
                 var houseid = document.getElementById("House-ID").value;
                 var newown = document.getElementById("New-Owner-Name").value;
                 var newownaddr = document.getElementById("New-Owner-Address").value;
-                myContract.methods.transfer_house(newown,newownaddr,houseid).send(function (err, result) 
+                myContract.methods.transfer_house(houseid).send(function (err, result) 
                 {
                     if (err) 
                     { 
@@ -146,11 +153,19 @@ var monitdevuser = web3.eth.subscribe('logs', {
                     {
                         //display value on the webpage
                         console.log(result);
-                        if(result!="")
-                        document.getElementById("House-Transfer-Result").innerHTML="Transfer successful";
+                        try
+                        {
+                          var myContract = new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+                          myContract.methods.change_house_own(newown,newownaddr).send(function(err,result){
+                            if(err)
+                              console.log(err);
+                            if(result)
+                              console.log(result);
+                          });
 
-                        else
-                        document.getElementById("House-Transfer-Result").innerHTML="Transfer unsuccessful";
+                        }
+                        catch(err)
+                        {console.log(error);}
                     }
                 });
 
@@ -175,7 +190,7 @@ var monitdevuser = web3.eth.subscribe('logs', {
                 
                 
                 
-                myContract.methods.dev_ret_user().call(function (err, result) 
+                myContract.methods.dev_ret_user().send(function (err, result) 
                 {
                     if (err) 
                     { 
@@ -198,3 +213,13 @@ var monitdevuser = web3.eth.subscribe('logs', {
               console.log(err);
             }
         }
+function confirmationPopUp(result) {
+  document.getElementById("modal-text").innerHTML = result;
+  document.getElementById("myModal").style.display = "block";
+}
+
+window.onclick = function (event) {
+  if (event.target == document.getElementById("myModal")) {
+    document.getElementById("myModal").style.display = "none";
+  }
+};
