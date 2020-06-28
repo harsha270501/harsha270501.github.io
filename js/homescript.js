@@ -15,6 +15,7 @@ var addhouse = web3.eth.subscribe('logs', {
                 var ini="0x";
                 var res1=ini.concat(datar.slice(26,66));
                 var res2=ini.concat(datar.slice(66));
+               console.log("Add house event");
                 console.log(res1); //house owner address
                 console.log(res2); //house id
                 
@@ -42,8 +43,10 @@ function addhousefn(r1,r2){
             if(err)
                 console.log(err);
             else
+            {
+              console.log("Added House");
                 console.log(result);
-
+            }
         });
     }
     catch(err)
