@@ -33,6 +33,13 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    
+    <script>
+      function display(){
+        document.getelementbyID("display-details").style.display="block";
+        getSDdetails();
+      }
+    </script>
 
      <!--web3-->
     <script src=" https://cdn.jsdelivr.net/npm/web3/dist/web3.js"></script>
@@ -170,15 +177,14 @@
                        <input type="text" class="form-control" id="Sec-Id" placeholder="House-Id" style="width:50%;text-align: center;margin-left: 27.5%;">     
                     </div>
                     
-                    <button type="button" class="btn btn-primary" onclick="getSDdetails()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="display()">Submit</button>
 
               </form> 
         </div> 
         <br>
-        <div class="display details" style="text-align: center;">
+        <div class="display details" style="text-align: center;display:none;">
           <h6>Security Device ID :</h6><p align="center" id="r1">..</p>
           <h6>House ID :</h6><p align="center" id="r2">..</p>
-          <h6>Security Device Type :</h6><p align="center" id="r2">..</p>
         </div>
                 <br>
         <div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
