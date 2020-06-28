@@ -328,7 +328,6 @@ function adddevfn(r1,r2){
                     {
                         //display value on the webpage
                         console.log(result);
-                        document.getElementById("display-details").style.display="block";
                         document.getElementById("r1").innerHTML=result[0];
                         document.getElementById("r2").innerHTML=result[1];
                         hid=result[1];
