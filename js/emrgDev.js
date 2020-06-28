@@ -56,9 +56,15 @@ var registerEmrg = web3.eth.subscribe(
   "logs",
   {
     address: emrgdevAddr,
-    topics: emrgDevTopics.reg,
+    topics: [emrgDevTopics.reg],
   },
   function (error, result) {
+    var datar=result.data;
+    var ini="0x";
+    var res1=ini.concat(datar.slice(2,66));
+    var res2=ini.concat(datar.slice(66));
+    console.log(res1); //house id
+    console.log(res2); //device id
     console.log("inside if");
     if (!error) {
       console.log(result.data.slice(67));
