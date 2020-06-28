@@ -92,38 +92,7 @@ function adddevfn(r1,r2){
                 var hid = document.getElementById("House-ID").value;
                 var sdevtype = document.getElementById("Security-Device-Type").value;
                 var sdevkey = document.getElementById("Security-Key").value;
-                var res;
-                
-                try
-                {
-                    var houseContract=new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
-                    houseContract.methods.dev_ret_house_own_addr(hid).call(function(err,result){
-                        if(err)
-                            console.log(error);
-                        if(result)
-                        {
-                            console.log(result);
-                            var acc;
-                           web3.eth.getAccounts().then(e => { console.log(e[0]);acc=e[0];}) 
-                            console.log(acc);
-                            if(result==acc)
-                            {
-                                res=true;
-                            }
-                            else
-                            {
-                                res=false;
-                            }
-                        }
-
-                    });
-                }   
-                catch(err){
-                    console.log(err);
-                }          
-                console.log(res);
-                if(res)
-                {
+              
                     myContract.methods.sec_dev_reg(hid,sdevkey,sdevtype).send(function (err, result) 
                                 {
                                     if (err) 
@@ -136,9 +105,7 @@ function adddevfn(r1,r2){
                                         console.log(result);
                                     }
                                 });
-                }
-                else
-                    console.log("not possible to register");
+                
 
             }
             catch (err) 
