@@ -812,7 +812,7 @@ var hsABI=[
 ]
 
 
-var usSC="0xba73B19502bDa9b0C75CC8D048a862152A031a8E";
+var usSC="0xf8dd4D07CC318C430C3F0249c1C6dE57E8C50f92";
 
 var usABI=[
 	{
@@ -931,6 +931,25 @@ var usABI=[
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hid",
+				"type": "bytes32"
+			}
+		],
+		"name": "isHouseExists",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
