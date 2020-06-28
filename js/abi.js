@@ -812,7 +812,7 @@ var hsABI=[
 ]
 
 
-var usSC="0x1d6AFDd28783337603509C947CdC65Ac36c8C14a";
+var usSC="0xaCd72282CB9D42EAdb07Cf030f45B586425740Fc";
 
 var usABI=[
 	{
@@ -871,6 +871,48 @@ var usABI=[
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "dev_ret_user",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hid",
+				"type": "bytes32"
+			}
+		],
+		"name": "isHouseExists",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "bytes32",
@@ -912,52 +954,10 @@ var usABI=[
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "dev_ret_user",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "hid",
-				"type": "bytes32"
-			}
-		],
-		"name": "isHouseExists",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
 	}
 ]
 
-var sdSC="0x1d6AFDd28783337603509C947CdC65Ac36c8C14a";
+var sdSC="0x4B2c943a533936654A2599bF7bf4a80f3b32f5eD";
 
 var sdABI=[
 	{
@@ -1142,7 +1142,6 @@ var sdABI=[
 		"type": "function"
 	}
 ]
-
 var emrgdevAbi = [
   {
     anonymous: false,
