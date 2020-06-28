@@ -60,7 +60,7 @@ var registerUtDev = web3.eth.subscribe(
   "logs",
   {
     address: utdevAddr,
-    topics: utDevTopics.reg,
+    topics: [utDevTopics.reg],
   },
   function (error, result) {
     var datar=result.data;
