@@ -27,7 +27,7 @@ function getdetails(){
               document.getElementById("r1").innerHTML=result[0];
               house_id = document.getElementById("r1").innerHTML = result[0];
               document.getElementById("r2").innerHTML=result[2];
-              document.getElementById("r3").innerHTML=Arr[result[2]];
+              document.getElementById("r3").innerHTML=Arr[result[1]];
               document.getElementById("r4").innerHTML=result[3];
               document.getElementById("display-div").className ="show";
 
