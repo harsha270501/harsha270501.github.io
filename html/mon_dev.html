@@ -205,7 +205,7 @@
                                         <input type="text" class="form-control" id="add_address" aria-describedby="addrHelp" placeholder="Address">
                                         <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
                                     </div>
-                                    <p>(Result)</p>
+                                    <p></p>
                                     <button type="button" onclick="mon_dev_add_acc_rights()" style=" background-color: orange;margin-top: 84px;">Add Access Rights</button>
 
                                 </form> 
@@ -227,7 +227,7 @@
                                         <input type="text" class="form-control" id="rem_address" aria-describedby="addrHelp" placeholder="Address">
                                         <small id="addrHelp" class="form-text text-muted">Enter a valid metamask address</small>
                                     </div>
-                                    <p>(Result)</p>
+                                    <p></p>
                                     <button type="button" onclick="mon_dev_remove_acc_rights()" style="  background-color: royalblue;margin-top: 29px;">Remove Access Rights</button>
 
                                 </form> 
@@ -249,7 +249,7 @@
                                         <label for="emerg_mon_dev_id">Device ID</label>
                                         <input type="text" class="form-control" id="emerg_mon_dev_id" placeholder="Device ID">     
                                     </div>
-                                    <p>(Result)</p>
+                                    <p></p>
                                     <button type="button" onclick="mon_dev_emerg()" style="  background-color: orangered;margin-top: 165px;">Check</button>
 
                                 </form> 
@@ -262,7 +262,7 @@
                               <img src="../images/units.png" alt="units-consumed" width="200px" height="200px">
                               <br>
 
-                                <h4>Update Units Consumed</h4>
+                                <h4>Update Units Consumed and Value</h4>
                                 <form>
                                     <div class="form-group">
                                         <label for="units_mon_dev_id">Device ID</label>
@@ -272,7 +272,11 @@
                                         <label for="units_units_consumed">Units consumed</label>
                                         <input type="text" class="form-control" id="units_units_consumed" placeholder="Units consumed in Watt">     
                                     </div>
-                                    <p>(Result)</p>
+                                    <div class="form-group">
+                                        <label for="mon_value">Value Taken</label>
+                                        <input type="text" class="form-control" id="mon_value" placeholder="Last value recorded">     
+                                    </div>
+                                    <p></p>
                                     <button type="button" onclick="mon_dev_units_update()" style="  background-color: deepskyblue;margin-top: 50px;" >Update</button>
 
                                 </form> 
