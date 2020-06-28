@@ -184,7 +184,7 @@ var monitdevuser = web3.eth.subscribe('logs', {
             {
                 // contract Abi defines all the variables,constants and functions of the smart contract. replace with your own abi
                 //instantiate and connect to contract address via Abi
-                var myContract = new web3.eth.Contract(hsABI, hsSC, {from: account, gasPrice: '5000000', gas:'3000000'});
+                var myContract = new web3.eth.Contract(usABI, usSC, {from: account, gasPrice: '5000000', gas:'3000000'});
                 
                 //call the get function of our Issuer contract
                 
