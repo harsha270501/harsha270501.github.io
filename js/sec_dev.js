@@ -328,16 +328,10 @@ function adddevfn(r1,r2){
                     {
                         //display value on the webpage
                         console.log(result);
+                        document.getElementById("display-details").style.display="block";
                         document.getElementById("r1").innerHTML=result[0];
                         document.getElementById("r2").innerHTML=result[1];
                         hid=result[1];
-                        var r=result[2];
-                        var res;
-                        if(r=="0")
-                            res="SmartLock";
-                        else
-                            res="SecurityCamera"
-                        document.getElementById("r3").innerHTML=res;
                     }
                 });
 
