@@ -8,7 +8,7 @@ var register_mtr = web3.eth.subscribe(
   "logs",
   {
     address: smart_mtr_sca,
-    topics: 0xdcca2fd466d95919391212a9e3c71b1ebabf78ac15dd2b33ce4531e03242be6c
+    topics: ['0xdcca2fd466d95919391212a9e3c71b1ebabf78ac15dd2b33ce4531e03242be6c']
 };
   },
   function (error, result) 
@@ -83,7 +83,7 @@ var unit_consumed = web3.eth.subscribe(
   "logs",
   {
     address: smart_mtr_sca,
-    topics: 0x63740acb0b61ea9006ac46884aa42fc7cb582744fe9d34048797b599be5e0d33,
+    topics: ['0x63740acb0b61ea9006ac46884aa42fc7cb582744fe9d34048797b599be5e0d33']
   },
   function (error, result) {
     console.log("inside if");
