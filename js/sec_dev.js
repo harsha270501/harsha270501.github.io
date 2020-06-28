@@ -255,13 +255,13 @@ function adddevfn(r1,r2){
                     if (err) 
                     { 
                         console.log(err);
-                        updatesmartmeter(units);
                         
                     }
                     if (result) 
                     {
                         //display value on the webpage
                         console.log(result);
+                       updatesmartmeter(units);
                     }
                 });
 
