@@ -4,6 +4,9 @@ var ac1;
 
 var hid="";
 
+var e=1000000;
+
+
 var addhouse = web3.eth.subscribe('logs', {
              address: '0x6f78992f89fc4640b465de5bba0bfd13559d64e3',
              topics: ['0x45ba5d56a78cb3aa5e0e3143eb70f7ed5f9522f64b1b2f327e0f5e0a6ae7e32c']
@@ -54,6 +57,27 @@ function addhousefn(r1,r2){
     
 }
 
+var updateelec = web3.eth.subscribe('logs', {
+             address: smart_mtr_sca,
+             topics: ['0x63740acb0b61ea9006ac46884aa42fc7cb582744fe9d34048797b599be5e0d33']
+             }, function(error, result){
+             console.log("inside if");   
+             if (!error)
+             {
+              var res=result.data;
+               var ini="0x";
+               res1=parseInt(ini.conact(res.slice(2,66)));
+               res2=ini.concat(res.slice(66));
+               if(res2==hid)
+               {
+                 e=res1;
+               }
+            }
+            else
+                 {
+                    console.log(error);
+                 }
+         });
 
     
     function hexToString (hex) 
@@ -213,7 +237,7 @@ function addhousefn(r1,r2){
                     {
                         //display value on the webpage
                         console.log(result);
-                        confirmationPopUp(result);
+                       
                     }
                 });
             }
@@ -223,14 +247,12 @@ function addhousefn(r1,r2){
             }
         }
 
-        function ecoFactor(e)
+        function ecoFactor()
         {
-            if(e==undefined)
-                {
-                    window.alert("Electricity not ")
-                }
+            
 
             console.log("Eco-factor");
+           
 
             try 
             {
