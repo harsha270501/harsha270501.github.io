@@ -9,7 +9,7 @@ var house_id;
 //get details
 function getdetails(){
   emrg_dev_id=document.getElementById("emrg_dev_id").value;
-  console.log(hid);
+  console.log(emrg_dev_id);
   try 
   {
       var myContract = new web3.eth.Contract(emrgdevAbi, emrgdevAddr, {from: account, gasPrice: '5000000', gas:'3000000'});
