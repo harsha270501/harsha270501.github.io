@@ -5,6 +5,52 @@ web3 = new Web3(
 );
 var emrg_dev_id;
 var house_id;
+
+//get details
+function getdetails(){
+  emrg_dev_id=document.getElementById("emrg-dev-id").value;
+  console.log(hid);
+  try 
+  {
+      var myContract = new web3.eth.Contract(emrgdevAbi, emrgdevAddr, {from: account, gasPrice: '5000000', gas:'3000000'});
+      
+      myContract.methods.retrieve_emrg_dev_details(emrg_dev_id).call(function (err, result) 
+      {
+          if (err) 
+          { 
+              console.log(err);
+          }
+          if (result) 
+          {
+              var Arr = ["FA","BA"];
+              console.log(result);
+              document.getElementById("r1").innerHTML=result[0];
+              house_id = document.getElementById("r1").innerHTML = result[0];
+              document.getElementById("r2").innerHTML=result[1];
+              document.getElementById("r3").innerHTML=Arr[result[2]];
+              document.getElementById("r4").innerHTML=result[3];
+              document.getElementById("display-div").className ="show";
+
+          }
+      });
+
+      document.getElementById("emrg-dev-id").reset();
+  }
+  catch (err) 
+  {
+    console.log(err);
+  }
+
+}
+function confirmationPopUp(result) {
+  document.getElementById("emrg-modal-text").innerHTML = result;
+  document.getElementById("emrg-myModal").style.display = "block";
+}
+window.onclick = function (event) {
+  if (event.target == document.getElementById("emrg-myModal")) {
+    document.getElementById("emrg-myModal").style.display = "none";
+  }
+};
 //Emit Function for Registration
 var registerEmrg = web3.eth.subscribe(
   "logs",
@@ -231,48 +277,3 @@ function detectEmergency() {
   }
 }
 
-//get details
-function getdetails(){
-  emrg_dev_id=document.getElementById("emrg-dev-id").value;
-  console.log(hid);
-  try 
-  {
-      var myContract = new web3.eth.Contract(emrgdevAbi, emrgdevAddr, {from: account, gasPrice: '5000000', gas:'3000000'});
-      
-      myContract.methods.retrieve_emrg_dev_details(emrg_dev_id).call(function (err, result) 
-      {
-          if (err) 
-          { 
-              console.log(err);
-          }
-          if (result) 
-          {
-              var Arr = ["FA","BA"];
-              console.log(result);
-              document.getElementById("r1").innerHTML=result[0];
-              house_id = document.getElementById("r1").innerHTML = result[0];
-              document.getElementById("r2").innerHTML=result[1];
-              document.getElementById("r3").innerHTML=Arr[result[2]];
-              document.getElementById("r4").innerHTML=result[3];
-              document.getElementById("display-div").className ="show";
-
-          }
-      });
-
-      document.getElementById("emrg-dev-id").reset();
-  }
-  catch (err) 
-  {
-    console.log(err);
-  }
-
-}
-function confirmationPopUp(result) {
-  document.getElementById("emrg-modal-text").innerHTML = result;
-  document.getElementById("emrg-myModal").style.display = "block";
-}
-window.onclick = function (event) {
-  if (event.target == document.getElementById("emrg-myModal")) {
-    document.getElementById("emrg-myModal").style.display = "none";
-  }
-};
