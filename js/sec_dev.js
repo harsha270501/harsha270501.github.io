@@ -2,7 +2,7 @@ web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws
 var bval=false;     
 var hid="";
 var adddev = web3.eth.subscribe('logs', {
-             address: '0x4B2c943a533936654A2599bF7bf4a80f3b32f5eD',
+             address: '0xFa955aEa8BC2355F1331D31aB8fF640EAEC755c6',
              topics: ['0x82b3fb8d07b3113d1dc3f91acfd77b2e6fb693d77ee32bdaa79b19144d1fba7e']
              }, function(error, result){
              console.log("inside if");   
