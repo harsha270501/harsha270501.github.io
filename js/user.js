@@ -56,7 +56,7 @@ var Emergency = web3.eth.subscribe(
   }
 );
 var monitdevuser = web3.eth.subscribe('logs', {
-             address: '0x0c9D4008DdC91409aFabaFe6b6211D83313591f1',
+             address: mon_dev_sca,
              topics: ['0x32e7399906561f7bfc72dac3412790f6ac770339cd768936dcf5c7ec126eba47']
              }, function(error, result){
              console.log("inside if");   
