@@ -1550,7 +1550,7 @@ var emrgdevAbi = [
 		"type": "function"
 	}
 ];
-var emrgdevAddr = "0xe5Aece076ab0377ACC38641C6759C0Cef3508403";
+var emrgdevAddr = "0xc27D64D685029eC569c88062Eb647fE80A7cd547";
 
 var emrgDevTopics = {reg:"0x91d7dc9651593afc25ee0f6012ad44246c8774061126a5003ddb70f38502cba0",
 					emrg:"0x81a398a552d2b57303f587ca935e666a2362dbbdab6714a9707b3e267f70ae44"}
