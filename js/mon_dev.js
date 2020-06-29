@@ -204,7 +204,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
                 var mon_dev_units = document.getElementById("units_units_consumed").value;
                 var mon_dev_id = document.getElementById("units_mon_dev_id").value;
                 var value=document.getElementById("mon_value").value;
-                myContract.methods.mon_update_value(mon_dev_id,mon_dev_units).send(function (err, result) 
+                myContract.methods.mon_read_units_consumed(mon_dev_id,mon_dev_units).send(function (err, result) 
                 {
                     if (err) 
                     { 
@@ -323,7 +323,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
                         document.getElementById("r2").innerHTML=res;
                         document.getElementById("r3").innerHTML=result[2];
                         document.getElementById("r4").innerHTML=result[3];
-                        document.getElementById("r5").innerHTML=result[3];
+                        document.getElementById("r5").innerHTML=result[4];
                     }
                 });
 
