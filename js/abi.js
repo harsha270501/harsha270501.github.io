@@ -1714,7 +1714,7 @@ var utdevAbi = [
 		"type": "function"
 	}
 ]
-var utdevAddr = "0x706f133739af16B29bf1Dd7a9A42D01aB6581e1a";
+var utdevAddr = "0xe9DFBae9E91D1e8ed2c3b1F033B5ee4EFB633451";
 
 var utDevTopics = {
   reg:"0xc752657b29309768e63435e256a3b089013dff5bb8c2e161796401cffa9b4d46",
