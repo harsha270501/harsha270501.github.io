@@ -1945,8 +1945,8 @@ var mon_dev_abi=
 		"type": "function"
 	}
 ]
-//var mon_dev_sca = '0xEE4603EA3f372026e00Ba691d0957c23BF492d48'; 
-var mon_dev_sca = '0xfa902c778e02de8d30f509489F39B62d33a2CC4d';
+var mon_dev_sca = '0xEE4603EA3f372026e00Ba691d0957c23BF492d48'; 
+//var mon_dev_sca = '0xfa902c778e02de8d30f509489F39B62d33a2CC4d';-Matic network(Mumbai)
 
 
 var smart_mtr_abi=
@@ -2165,6 +2165,6 @@ var smart_mtr_abi=
 	}
 ]
 
-//var smart_mtr_sca = '0xBefd306b8d2a581c1D5F0B4156dDE66729C49a3E'; 
-var smart_mtr_sca = '0xe4080CEbaf04D54cFAb862D44Ef4a022D23f4833';
+var smart_mtr_sca = '0xBefd306b8d2a581c1D5F0B4156dDE66729C49a3E'; 
+//var smart_mtr_sca = '0xe4080CEbaf04D54cFAb862D44Ef4a022D23f4833';-Matic Network(mumbai)
 
