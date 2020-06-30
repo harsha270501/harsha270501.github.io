@@ -6,7 +6,7 @@ var mon_dev_id;
 var bval=false;     
 var hid="";
 var adddev = web3.eth.subscribe('logs', {
-             address: '0xfa902c778e02de8d30f509489F39B62d33a2CC4',
+             address: '0xEE4603EA3f372026e00Ba691d0957c23BF492d48',
              topics: ['0xa3b22955044031d9700ff67d8bceaaffd00f924a47463de18ba2f16c6af82650']
              }, function(error, result){
              console.log("inside if");   
@@ -85,7 +85,7 @@ function adddevfn(r1,r2){
 
 //Emit function for Emergency
 var emergency_mon = web3.eth.subscribe('logs', {
-             address: '0xfa902c778e02de8d30f509489F39B62d33a2CC48',
+             address: '0xEE4603EA3f372026e00Ba691d0957c23BF492d48',
              topics: ['0x32e7399906561f7bfc72dac3412790f6ac770339cd768936dcf5c7ec126eba47']
              }, 
   function (error, result) {
@@ -120,7 +120,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
                     if (result) 
                     {
                         console.log(result);
-                        //confirmationPopUp(result);
+                        confirmationPopUp(result);
                     }
                 });
 
@@ -151,7 +151,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
                     }
                     if (result) 
                         console.log(result);
-                         confirmationPopUp(result);
+                        //confirmationPopUp(result);
                     }
                 );
 
@@ -181,7 +181,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
                     if (result) 
                     {
                         console.log(result);
-                         confirmationPopUp(result);
+                        //confirmationPopUp(result);
                     }
                 });
 
@@ -234,7 +234,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
  
                 var myContract = new web3.eth.Contract(mon_dev_abi,mon_dev_sca, {from: account, gasPrice: '5000000', gas:'3000000'})
                 //var mon_dev_id = document.getElementById("emerg_mon_dev_id").value;
-				//var mon_value  = document.getElementById("emerg_mon_dev_value").value;
+		//var mon_value  = document.getElementById("emerg_mon_dev_value").value;
                 
                 myContract.methods.mon_update_value(mon_dev_id,value).send(function (err, result) 
                 {
@@ -277,7 +277,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
                     if (result) 
                     {
                         console.log(result);
-                        confirmationPopUp(result);
+                        //confirmationPopUp(result);
                     }
                 });
 
@@ -309,7 +309,7 @@ var emergency_mon = web3.eth.subscribe('logs', {
                     {
                         //display value on the webpage
                         console.log(result);
-                        confirmationPopUp(result);
+                        //confirmationPopUp(result);
                         mon_display();
                         document.getElementById("r1").innerHTML=result[0];
                         var r=result[1];
