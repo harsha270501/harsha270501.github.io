@@ -170,7 +170,7 @@ var updateelec = web3.eth.subscribe('logs', {
                     }
                 });
 
-                document.getElementById("home-choices-id").reset();
+                //document.getElementById("home-choices-id").reset();
             }
             catch (err) 
             {
