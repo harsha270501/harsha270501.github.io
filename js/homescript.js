@@ -160,7 +160,7 @@ var updateelec = web3.eth.subscribe('logs', {
                     {
                         //display value on the webpage
                         console.log(result);
-                        document.getElementById("display-details").style.display="block";
+                        document.getElementById("display-det").style.display="block";
                         document.getElementById("r1").innerHTML=result[0];
                         document.getElementById("r2").innerHTML=result[1];
                         document.getElementById("r3").innerHTML=result[2];
