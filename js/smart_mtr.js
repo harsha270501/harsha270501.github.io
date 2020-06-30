@@ -5,7 +5,7 @@ var smart_mtr_id;
 var bval=false;     
 var hid="";
 var adddev = web3.eth.subscribe('logs', {
-             address: '0xBefd306b8d2a581c1D5F0B4156dDE66729C49a3E',
+             address: '0xe4080CEbaf04D54cFAb862D44Ef4a022D23f4833',
              topics: ['0xdcca2fd466d95919391212a9e3c71b1ebabf78ac15dd2b33ce4531e03242be6c']
              }, function(error, result){
              console.log("inside if");   
@@ -80,7 +80,7 @@ function adddevfn(r1,r2){
 var unit_consumed = web3.eth.subscribe(
   "logs",
   {
-    address: smart_mtr_sca,
+    address: 0xe4080CEbaf04D54cFAb862D44Ef4a022D23f4833,
     topics: ['0x63740acb0b61ea9006ac46884aa42fc7cb582744fe9d34048797b599be5e0d33']
   },
   function (error, result) {
