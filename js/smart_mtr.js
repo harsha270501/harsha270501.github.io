@@ -23,7 +23,7 @@ var adddev = web3.eth.subscribe('logs', {
                  console.log(bval);
                checkhousereg(res1);
                 if(bval==true){
-                    //confirmationPopUp("Smart Meter ID: ".concat(res2));
+                    confirmationPopUp("Smart Meter ID: ".concat(res2));
                     adddevfn(res1,res2);
                 }
                  
@@ -125,7 +125,7 @@ var unit_consumed = web3.eth.subscribe(
                     {
                         console.log(result);
                         //console.log(result[0]);
-                        confirmationPopUp(result);
+                        //confirmationPopUp(result);
                     }
                 });
 
